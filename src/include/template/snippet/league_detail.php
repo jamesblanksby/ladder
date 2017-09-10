@@ -17,6 +17,7 @@
             <td width="30" class="stats"></td>
             <td width="70" class="position">Position</td>
             <td class="player">Player</td>
+            <td width="30" class="naked">N</td>
             <td width="57" class="played">P</td>
             <td width="39" class="won">W</td>
             <td width="39" class="lost">L</td>
@@ -33,6 +34,10 @@
             <td class="stats"><a class="toggle"></a></td>
             <td class="position"><?php echo ($position + 1); ?></td>
             <td class="player"><?php echo user_name($item->user); ?></td>
+            <td class="naked">
+                <div class="detail"><?php echo $item->naked . '/3'; ?></div>
+                <div class="<?php echo 'stage' . '_' . $item->naked; ?>"></div>
+            </td>
             <td class="played"><?php echo $item->played; ?></td>
             <td class="won"><?php echo $item->won; ?></td>
             <td class="lost"><?php echo $item->lost; ?></td>
@@ -68,7 +73,7 @@
             </td>
         </tr>
         <tr class="stats">
-            <td colspan="12">
+            <td colspan="13">
                 <div class="content">
                     <?php $graph_data = htmlentities(json_encode(array_values($item->graph))); ?>
                     <?php $graph_label = htmlentities(json_encode(array_keys($item->graph))); ?>

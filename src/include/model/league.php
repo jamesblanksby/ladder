@@ -358,6 +358,7 @@ function league_table($mysqli, $league_id) {
             $item = (object) [
                 'empty' => true,
                 'user' => $user,
+                'naked' => user_league_naked($mysqli, $user->id, $league_id),
                 'played' => 0,
                 'won' => 0,
                 'lost' => 0,

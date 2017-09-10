@@ -143,6 +143,36 @@ function user_league_position($mysqli, $user_id, $league_id) {
     }
 }
 
+/* --------------------------------------------------------------- LEAGUE NAKED --- */
+function user_league_naked($mysqli, $user_id, $league_id) {
+    $count = 0;
+
+    $game_sql = "
+        SELECT game.*
+        FROM game
+        WHERE (game.player_1 = $user_id
+            OR game.player_2 = $user_id)
+            AND game.league = $league_id";
+
+    $game_result = $mysqli->query($game_sql);
+
+    if ($game_result->num_rows > 0) {
+        while ($game = $game_result->fetch_object()) {
+            if ($game->player_1 == $user_id) {
+                $player = 1;
+            } else if ($game->player_2 == $user_id) {
+                $player = 2;
+            }
+
+            if ($game->{'score_' . $player} == 0) {
+                $count++;
+            }
+        }
+    }
+
+    return $count;
+}
+
 /* ---------------------------------------------------------------- GAME SELECT --- */
 function user_game_select($mysqli, $user_id, $league_id = null, $time = null, $limit = null) {
     $game_sql = "
