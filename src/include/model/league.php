@@ -343,7 +343,7 @@ function league_table($mysqli, $league_id, $time = null) {
         foreach ($user_array as $user) {
 
             $relative = $time = time();
-            for ($i = 0; $i < 8; $i++) {
+            for ($i = 0; $i < 12; $i++) {
                 if ($i > 0) {
                     $monday = strtotime('last Monday', $relative);
                     $time = strtotime('-1 second', $monday);
@@ -351,7 +351,7 @@ function league_table($mysqli, $league_id, $time = null) {
 
                 $rating = user_rating_get($mysqli, $user->id, $league_id, $time);
                 if (is_null($rating)) $rating = $user->rating;
-                $user_graph_array['Week' . ' ' . date('W', $time)] = $rating;
+                $user_graph_array['Wk' . ' ' . date('W', $time)] = $rating;
 
                 $relative = $time;
             }
