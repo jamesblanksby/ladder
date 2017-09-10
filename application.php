@@ -43,5 +43,3 @@ session_start();
 /* --------------------------------------------------------------- FACEBOOK API --- */
 define('FACEBOOK_ID', $env['facebook']['id']);
 define('FACEBOOK_SECRET', $env['facebook']['secret']);
-
-$_SESSION['user'] = user_get($mysqli, 13);
