@@ -1,0 +1,13 @@
+{
+	"devDependencies": {
+		"gulp": "*",
+		"gulp-autoprefixer": "*",
+		"gulp-csscomb": "*",
+		"gulp-jshint": "*",
+		"gulp-livereload": "*",
+		"node-notifier": "*",
+		"gulp-sass": "*",
+		"gulp-shell": "*",
+		"jshint": "*"
+	}
+}

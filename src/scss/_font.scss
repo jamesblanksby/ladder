@@ -1,0 +1,29 @@
+/* //////////////////////////////////////////////////////////////////////////////// */
+/* /////////////////////////////////////////////////////////////////////// FONT /// */
+/* //////////////////////////////////////////////////////////////////////////////// */
+
+/* --------------------------------------------------------------------- APERCU --- */
+@font-face {
+    font-family: 'apercu';
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('../font/apercu.eot');
+    src: url('../font/apercu.eot') format('embedded-opentype'), 
+    	 url('../font/apercu.woff') format('woff'), 
+    	 url('../font/apercu.ttf') format('truetype'), 
+    	 url('../font/apercu.svg#apercu') format('svg');
+}
+
+/* --------------------------------------------------------------- FONT AWESOME --- */
+@font-face {
+    font-family: 'fa';
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('../font/fontawesome.eot');
+    src: url('../font/fontawesome.eot') format('embedded-opentype'), 
+         url('../font/fontawesome.woff') format('woff'), 
+         url('../font/fontawesome.ttf') format('truetype'), 
+         url('../font/fontawesome.svg#fontawesome') format('svg');
+}

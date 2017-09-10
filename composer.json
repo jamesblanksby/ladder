@@ -1,0 +1,8 @@
+{
+    "config": {
+        "vendor-dir": "src/vendor"
+    },
+    "require" : {
+        "facebook/graph-sdk" : "~5.0"
+    }
+}
