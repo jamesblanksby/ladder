@@ -424,9 +424,6 @@ function league_graph_render(row) {
     var data,
         months,
         context,
-        value_min,
-        value_max,
-        value_difference,
         graph;
 
     $row = $(row);
@@ -440,9 +437,6 @@ function league_graph_render(row) {
     context = $canvas.get(0).getContext('2d');
 
     data = data.map(Number);
-    value_min = Math.min.apply(null, data);
-    value_max = Math.max.apply(null, data);
-    value_difference = Math.max(((value_max - value_min) / 2), 10);
 
     graph = new Chart(context).LineWithLine({
         labels: label,
@@ -460,15 +454,12 @@ function league_graph_render(row) {
     {
         scaleOverride: true,
         scaleSteps: 6,
-        // scaleStepWidth: Math.floor(((value_max + value_difference) - (value_min - value_difference)) / 10),
-        // scaleStartValue: (value_min - value_difference),
         scaleStepWidth: 50,
         scaleStartValue: 850,
         scaleFontFamily: 'apercu',
         scaleFontSize: 12,
         scaleFontColor: '#717A86',
         scaleLineColor: '#D7DADD',
-        // showTooltips: true,
         tooltipFontFamily: 'apercu',
         tooltipFontSize: 12,
         tooltipFillColor: '#303d4d',
