@@ -335,7 +335,7 @@ function league_code_ajax() {
 }
 
 /* --------------------------------------------------------------------- TABLE  --- */
-function league_table($mysqli, $league_id, $time = null) {
+function league_table($mysqli, $league_id) {
     $user_array = league_user_select($mysqli, $league_id);
 
     $table_array = [];
@@ -369,7 +369,7 @@ function league_table($mysqli, $league_id, $time = null) {
                 'graph' => array_reverse($user_graph_array)
             ];
 
-            $game_array = user_game_select($mysqli, $user->id, $league_id, $time);
+            $game_array = user_game_select($mysqli, $user->id, $league_id);
 
             if (isset($game_array)) {
                 $item->empty = false;
