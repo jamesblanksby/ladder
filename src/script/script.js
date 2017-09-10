@@ -449,10 +449,10 @@ function league_graph_render(row) {
         datasets: [
             {
                 fillColor: 'rgba(131,180,117,.1)',
-                strokeColor: '#83B475',
-                pointColor: '#83B475',
+                strokeColor: '#11b124',
+                pointColor: '#11b124',
                 pointStrokeColor: '#fff',
-                pointHighlightFill: '#83B475',
+                pointHighlightFill: '#11b124',
                 data: data
             }
         ]
@@ -464,14 +464,15 @@ function league_graph_render(row) {
         // scaleStartValue: (value_min - value_difference),
         scaleStepWidth: 50,
         scaleStartValue: 850,
-        scaleFontFamily: 'apercu',
+        scaleFontFamily: 'Roboto',
         scaleFontSize: 12,
         scaleFontColor: '#717A86',
         scaleLineColor: '#D7DADD',
         // showTooltips: true,
-        tooltipFontFamily: 'apercu',
+        tooltipFontFamily: 'Roboto',
         tooltipFontSize: 12,
         tooltipFillColor: '#303d4d',
+        tooltipCornerRadius: 2,
         tooltipTemplate: '<%= value %>',
         datasetFill: true,
         pointDotRadius: 4,

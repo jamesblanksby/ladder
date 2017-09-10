@@ -2,18 +2,8 @@
 /* /////////////////////////////////////////////////////////////////////// FONT /// */
 /* //////////////////////////////////////////////////////////////////////////////// */
 
-/* --------------------------------------------------------------------- APERCU --- */
-@font-face {
-    font-family: 'apercu';
-    font-weight: normal;
-    font-style: normal;
-
-    src: url('../font/apercu.eot');
-    src: url('../font/apercu.eot') format('embedded-opentype'), 
-    	 url('../font/apercu.woff') format('woff'), 
-    	 url('../font/apercu.ttf') format('truetype'), 
-    	 url('../font/apercu.svg#apercu') format('svg');
-}
+/* --------------------------------------------------------------------- ROBOTO --- */
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,300');
 
 /* --------------------------------------------------------------- FONT AWESOME --- */
 @font-face {

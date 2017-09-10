@@ -2,11 +2,13 @@
 /* ///////////////////////////////////////////////////////////////////// GLOBAL /// */
 /* //////////////////////////////////////////////////////////////////////////////// */
 /* ---------------------------------------------------------------------- RESET --- */
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,300');
 *,
 *:after,
 *:before
 {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 
     outline: none;
 
@@ -218,17 +220,7 @@ pre
 /* //////////////////////////////////////////////////////////////////////////////// */
 /* /////////////////////////////////////////////////////////////////////// FONT /// */
 /* //////////////////////////////////////////////////////////////////////////////// */
-/* --------------------------------------------------------------------- APERCU --- */
-@font-face
-{
-    font-family: 'apercu';
-    font-weight: normal;
-    font-style: normal;
-
-    src: url('../font/apercu.eot');
-    src: url('../font/apercu.eot') format('embedded-opentype'), url('../font/apercu.woff') format('woff'), url('../font/apercu.ttf') format('truetype'), url('../font/apercu.svg#apercu') format('svg');
-}
-
+/* --------------------------------------------------------------------- ROBOTO --- */
 /* --------------------------------------------------------------- FONT AWESOME --- */
 @font-face
 {
@@ -247,6 +239,7 @@ pre
 .chosen-container
 {
     font: inherit;
+    font-size: 13px;
 
     position: relative;
 
@@ -263,7 +256,8 @@ pre
 
 .chosen-container *
 {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 
 .chosen-container .chosen-drop
@@ -326,7 +320,7 @@ pre
     display: block;
     overflow: hidden;
 
-    padding: 10px 12px;
+    padding: 8px 12px;
 
     white-space: nowrap;
     text-decoration: none;
@@ -364,7 +358,7 @@ pre
     font-size: 1px;
 
     position: absolute;
-    top: 6px;
+    top: 4px;
     right: 26px;
 
     display: block;
@@ -388,7 +382,7 @@ pre
 .chosen-container-single .chosen-single div
 {
     position: absolute;
-    top: 6px;
+    top: 4px;
     right: 0;
 
     display: block;
@@ -500,7 +494,7 @@ pre
 .chosen-container .chosen-results li.highlighted
 {
     color: white;
-    background-color: #65c178;
+    background-color: #11b124;
 }
 
 .chosen-container .chosen-results li.no-results
@@ -542,7 +536,7 @@ pre
 
     width: 100%;
     height: auto;
-    min-height: 39px;
+    min-height: 33px;
     margin: 0;
     padding: 0 5px;
 
@@ -820,6 +814,7 @@ html,
 body
 {
     -webkit-text-size-adjust: 100%;
+       -moz-text-size-adjust: 100%;
         -ms-text-size-adjust: 100%;
             text-size-adjust: 100%;
     tap-highlight-color: transparent;
@@ -829,7 +824,7 @@ body
 
 body
 {
-    font-family: 'apercu';
+    font-family: 'Roboto';
     font-size: 15px;
     font-weight: 400;
 
@@ -841,7 +836,6 @@ h1,
 h2,
 h3
 {
-    font-weight: bold;
     line-height: 1.2;
 
     margin-bottom: 1em;
@@ -913,7 +907,7 @@ header
     width: 100%;
     padding: 9px 0;
 
-    background-color: #53ba68;
+    background-color: #0f9a1f;
 }
 
 header .container
@@ -961,8 +955,6 @@ header nav a
 
 header nav a.active
 {
-    font-weight: bold;
-
     color: white;
 }
 
@@ -993,12 +985,11 @@ header a.user .avatar
 
 header a.user .name
 {
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 13px;
 
     float: left;
 
-    margin-top: 8px;
+    margin-top: 9px;
 
     cursor: pointer;
 
@@ -1082,7 +1073,7 @@ header div.user span
 
 header div.user a
 {
-    font-size: 14px;
+    font-size: 13px;
 
     display: block;
 
@@ -1136,7 +1127,8 @@ main
 
     width: 100%;
 
-    animation: remove 300ms linear 4000ms forwards;
+    -webkit-animation: remove 300ms linear 4000ms forwards;
+            animation: remove 300ms linear 4000ms forwards;
     pointer-events: none;
 
     opacity: 1;
@@ -1165,7 +1157,8 @@ main
     margin-top: -2px;
     margin-left: 16px;
 
-    transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
 
     text-rendering: auto;
 }
@@ -1177,7 +1170,8 @@ main
     right: 20px;
 
     cursor: pointer;
-    transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
     pointer-events: all;
 
     opacity: .6;
@@ -1190,7 +1184,7 @@ main
 
 .message.positive
 {
-    background-color: #65c178;
+    background-color: #11b124;
 }
 
 .message.positive .text:before
@@ -1210,9 +1204,18 @@ main
 
 .message.remove
 {
-    transition: opacity 300ms;
+    -webkit-transition: opacity 300ms;
+            transition: opacity 300ms;
 
     opacity: 0;
+}
+
+@-webkit-keyframes remove
+{
+    to
+    {
+        opacity: 0;
+    }
 }
 
 @keyframes remove
@@ -1227,11 +1230,11 @@ main
 .button
 {
     font: inherit;
-    font-weight: bold;
+    font-size: 13px;
 
     display: inline-block;
 
-    padding: 12px 14px;
+    padding: 9px 14px 10px;
 
     cursor: pointer;
     text-align: center;
@@ -1245,17 +1248,17 @@ main
 .button.primary
 {
     color: white;
-    background-color: #65c178;
+    background-color: #11b124;
 }
 
 .button.primary:hover
 {
-    background-color: #53ba68;
+    background-color: #0f9a1f;
 }
 
 .button.secondary
 {
-    padding: 11px 14px;
+    padding: 8px 14px 9px;
 
     color: #a4a4a4;
     border: 1px solid #d7dadd;
@@ -1306,6 +1309,7 @@ h1 + .control .button
     {
         position: relative;
 
+        display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
 
@@ -1316,6 +1320,7 @@ h1 + .control .button
     {
         margin: 0 4px;
 
+        -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
     }
@@ -1344,7 +1349,6 @@ h1 + .control .button
 .dialog_overlay .dialog_header
 {
     font-size: 20px;
-    font-weight: bold;
 
     padding: 16px 20px 0 20px;
 }
@@ -1358,7 +1362,8 @@ h1 + .control .button
     width: calc(100% - 40px);
     max-width: 400px;
 
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 
     border-radius: 2px;
     background-color: white;
@@ -1421,7 +1426,8 @@ h1 + .control .button
     width: calc(100% - 32px);
     max-width: 720px;
 
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 
     border-radius: 2px;
     background-color: white;
@@ -1500,7 +1506,8 @@ h1 + .control .button
         width: 100vw;
         max-width: none !important;
 
-        transform: none;
+        -webkit-transform: none;
+                transform: none;
     }
 }
 
@@ -1515,7 +1522,7 @@ h1 + .control .button
 /* ----------------------------------------------------------------------- FORM --- */
 form label
 {
-    font-size: 14px;
+    font-size: 13px;
 
     display: block;
 
@@ -1550,6 +1557,7 @@ form .item.submit .button
 form .item input
 {
     font: inherit;
+    font-size: 13px;
 
     width: 100%;
     margin: 0;
@@ -1563,6 +1571,11 @@ form .item input
 form .item input.error
 {
     border-color: #d66c54;
+}
+
+form .item select
+{
+    font-size: 13px;
 }
 
 form .item.required > label:not(.error):after
@@ -1601,6 +1614,8 @@ table
 
 table thead tr td
 {
+    font-size: 13px;
+
     padding: 14px 10px;
 
     color: white;
@@ -1619,7 +1634,7 @@ table thead tr td:last-child
 
 table tbody tr td
 {
-    font-size: 14px;
+    font-size: 13px;
 
     padding: 12px 10px;
 }
@@ -1647,7 +1662,8 @@ table tbody tr.odd td
     width: calc(100% - 32px);
     max-width: 300px;
 
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 }
 
 .index .center a.logo
@@ -1782,7 +1798,7 @@ table tbody tr.odd td
 
 .league h1 .code:before
 {
-    font-family: 'apercu';
+    font-family: 'Roboto';
     font-size: 13px;
 
     content: 'Join Code: ';
@@ -1842,13 +1858,13 @@ table tbody tr.odd td
 
     content: '';
 
+    background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, .6)));
     background-image: linear-gradient(transparent, rgba(0, 0, 0, .6));
 }
 
 .league .league_list > .item .poster .name
 {
     font-size: 18px;
-    font-weight: bold;
 
     position: absolute;
     bottom: 0;
@@ -1895,7 +1911,7 @@ table tbody tr.odd td
 
 .league .league_list > .item .detail .owner .name
 {
-    font-size: 14px;
+    font-size: 13px;
 
     margin-top: 2px;
     margin-bottom: 2px;
@@ -1930,7 +1946,7 @@ table tbody tr.odd td
 
 .league .league_list > .item .detail .leader
 {
-    font-size: 14px;
+    font-size: 13px;
 
     margin-bottom: 16px;
 }
@@ -1953,7 +1969,7 @@ table tbody tr.odd td
 .league .league_list > .item .detail .result_last .player_1,
 .league .league_list > .item .detail .result_last .player_2
 {
-    font-size: 14px;
+    font-size: 13px;
     line-height: 1.6;
 
     position: relative;
@@ -1966,8 +1982,6 @@ table tbody tr.odd td
 .league .league_list > .item .detail .result_last .player_1:after,
 .league .league_list > .item .detail .result_last .player_2:after
 {
-    font-weight: bold;
-
     position: absolute;
     right: 0;
 
@@ -1978,7 +1992,7 @@ table tbody tr.odd td
     content: attr(data-value);
     text-align: center;
 
-    color: #65c178;
+    color: #11b124;
     border-left: 1px solid #d7dadd;
 }
 
@@ -2009,7 +2023,6 @@ table tbody tr.odd td
 .league .league_list > .item .detail .player_list .avatar .expand
 {
     font-size: 12px;
-    font-weight: bold;
     line-height: 28px;
 
     text-align: center;
@@ -2047,7 +2060,6 @@ table tbody tr.odd td
 .league .league_list > .item .stats .item .value
 {
     font-size: 20px;
-    font-weight: bold;
 
     margin-bottom: 5px;
 }
@@ -2132,7 +2144,8 @@ table tbody tr.odd td
     left: 50%;
 
     content: '\f1f8';
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 
     text-rendering: auto;
 }
@@ -2175,7 +2188,8 @@ table tbody tr.odd td
     padding: 10px 16px;
 
     content: 'Drag and drop\Aor click to upload';
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     text-align: center;
     white-space: pre;
 
@@ -2225,7 +2239,8 @@ table tbody tr.odd td
     left: 50%;
 
     content: '\f021';
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 
     text-rendering: auto;
 }
@@ -2292,7 +2307,7 @@ table tbody tr.odd td
 
 .league #league_setting .modal_box .player_list .item .name
 {
-    font-size: 14px;
+    font-size: 13px;
 
     width: calc(100% - 60px);
     margin-top: 5px;
@@ -2367,8 +2382,6 @@ table tbody tr.odd td
 
 .league table.league_table thead tr td
 {
-    font-weight: bold;
-
     border-color: #303d4d !important;
 }
 
@@ -2405,7 +2418,7 @@ table tbody tr.odd td
 
     cursor: pointer;
 
-    color: #65c178;
+    color: #11b124;
 }
 
 .league table.league_table tbody tr td.stats .toggle:before
@@ -2420,7 +2433,8 @@ table tbody tr.odd td
 
 .league table.league_table tbody tr td.stats .toggle.open
 {
-    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
 }
 
 .league table.league_table tbody tr td.last_10 .game
@@ -2450,14 +2464,14 @@ table tbody tr.odd td
 
 .league table.league_table tbody tr td.last_10 .game.won
 {
-    background-color: #53ba68;
+    background-color: #0f9a1f;
 }
 
 .league table.league_table tbody tr td.last_10 .game.won .detail:before
 {
     content: 'won';
 
-    color: #53ba68;
+    color: #0f9a1f;
 }
 
 .league table.league_table tbody tr td.last_10 .game.lost
@@ -2479,7 +2493,7 @@ table tbody tr.odd td
 
 .league table.league_table tbody tr td.last_10 .game .detail
 {
-    font-size: 13px;
+    font-size: 12px;
     line-height: 1.3;
 
     position: absolute;
@@ -2490,8 +2504,10 @@ table tbody tr.odd td
     margin-bottom: 8px;
     padding: 10px;
 
-    transition: opacity 150ms;
-    transform: translate(-50%, 0);
+    -webkit-transition: opacity 150ms;
+            transition: opacity 150ms;
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
     white-space: nowrap;
     pointer-events: none;
 
@@ -2504,7 +2520,6 @@ table tbody tr.odd td
 .league table.league_table tbody tr td.last_10 .game .detail:before
 {
     font-size: 11px;
-    font-weight: bold;
     line-height: 11px;
 
     display: block;
@@ -2560,8 +2575,10 @@ table tbody tr.odd td
     height: 300px;
     margin-top: -332px;
 
-    transition: margin-top 300ms ease 100ms, opacity 300ms;
-    transform: translateZ(0);
+    -webkit-transition: margin-top 300ms ease 100ms, opacity 300ms;
+            transition: margin-top 300ms ease 100ms, opacity 300ms;
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
 
     opacity: 0;
 
@@ -2599,7 +2616,6 @@ table tbody tr.odd td
 .league table.league_table tbody tr.stats td .content .games span
 {
     font-size: 20px;
-    font-weight: bold;
     line-height: 26px;
 
     position: absolute;
@@ -2618,7 +2634,7 @@ table tbody tr.odd td
 .league table.league_table tbody tr.stats td .content .goals span
 {
     font-size: 68px;
-    font-weight: normal;
+    font-weight: lighter;
     line-height: 90%;
 }
 
@@ -2703,7 +2719,8 @@ table tbody tr.odd td
 
 .league table.league_table tbody tr.active td.stats .toggle
 {
-    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
 }
 
 .league table.league_table tbody tr.active + tr.stats td
@@ -2715,7 +2732,8 @@ table tbody tr.odd td
 {
     margin-top: 0;
 
-    transition: margin-top 300ms, opacity 300ms ease 300ms;
+    -webkit-transition: margin-top 300ms, opacity 300ms ease 300ms;
+            transition: margin-top 300ms, opacity 300ms ease 300ms;
 
     opacity: 1;
 }
