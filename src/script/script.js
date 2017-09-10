@@ -472,6 +472,7 @@ function league_graph_render(row) {
         tooltipFontFamily: 'apercu',
         tooltipFontSize: 12,
         tooltipFillColor: '#303d4d',
+        tooltipCornerRadius: 2,
         tooltipTemplate: '<%= value %>',
         datasetFill: true,
         pointDotRadius: 4,
