@@ -436,8 +436,6 @@ function league_graph_render(row) {
     label = JSON.parse($graph.attr('data-graph-label'));
     context = $canvas.get(0).getContext('2d');
 
-    data = data.map(Number);
-
     graph = new Chart(context).LineWithLine({
         labels: label,
         datasets: [
@@ -464,7 +462,7 @@ function league_graph_render(row) {
         tooltipFontSize: 12,
         tooltipFillColor: '#303d4d',
         tooltipCornerRadius: 2,
-        tooltipTemplate: '<%= value %>',
+        tooltipTemplate: '<%if (value){%><%= value %><%} else {%> No data <%}%>',
         datasetFill: true,
         pointDotRadius: 4,
         pointDotStrokeWidth: 1,

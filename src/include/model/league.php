@@ -350,7 +350,6 @@ function league_table($mysqli, $league_id) {
                 }
 
                 $rating = user_rating_get($mysqli, $user->id, $league_id, $time);
-                if (is_null($rating)) $rating = $user->rating;
                 $user_graph_array['Wk' . ' ' . date('W', $time)] = $rating;
 
                 $relative = $time;
