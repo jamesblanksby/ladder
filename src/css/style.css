@@ -6,7 +6,8 @@
 *:after,
 *:before
 {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 
     outline: none;
 
@@ -263,7 +264,8 @@ pre
 
 .chosen-container *
 {
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 
 .chosen-container .chosen-drop
@@ -500,7 +502,7 @@ pre
 .chosen-container .chosen-results li.highlighted
 {
     color: white;
-    background-color: #65c178;
+    background-color: #23cf5f;
 }
 
 .chosen-container .chosen-results li.no-results
@@ -838,6 +840,7 @@ html,
 body
 {
     -webkit-text-size-adjust: 100%;
+       -moz-text-size-adjust: 100%;
         -ms-text-size-adjust: 100%;
             text-size-adjust: 100%;
     tap-highlight-color: transparent;
@@ -931,7 +934,7 @@ header
     width: 100%;
     padding: 9px 0;
 
-    background-color: #53ba68;
+    background-color: #23cf5f;
 }
 
 header .container
@@ -1154,7 +1157,8 @@ main
 
     width: 100%;
 
-    animation: remove 300ms linear 4000ms forwards;
+    -webkit-animation: remove 300ms linear 4000ms forwards;
+            animation: remove 300ms linear 4000ms forwards;
     pointer-events: none;
 
     opacity: 1;
@@ -1183,7 +1187,8 @@ main
     margin-top: -2px;
     margin-left: 16px;
 
-    transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
 
     text-rendering: auto;
 }
@@ -1195,7 +1200,8 @@ main
     right: 20px;
 
     cursor: pointer;
-    transform: translate(0, -50%);
+    -webkit-transform: translate(0, -50%);
+            transform: translate(0, -50%);
     pointer-events: all;
 
     opacity: .6;
@@ -1208,7 +1214,7 @@ main
 
 .message.positive
 {
-    background-color: #65c178;
+    background-color: #23cf5f;
 }
 
 .message.positive .text:before
@@ -1228,9 +1234,18 @@ main
 
 .message.remove
 {
-    transition: opacity 300ms;
+    -webkit-transition: opacity 300ms;
+            transition: opacity 300ms;
 
     opacity: 0;
+}
+
+@-webkit-keyframes remove
+{
+    to
+    {
+        opacity: 0;
+    }
 }
 
 @keyframes remove
@@ -1263,12 +1278,12 @@ main
 .button.primary
 {
     color: white;
-    background-color: #65c178;
+    background-color: #23cf5f;
 }
 
 .button.primary:hover
 {
-    background-color: #53ba68;
+    background-color: #1fb955;
 }
 
 .button.secondary
@@ -1324,6 +1339,7 @@ h1 + .control .button
     {
         position: relative;
 
+        display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
 
@@ -1334,6 +1350,7 @@ h1 + .control .button
     {
         margin: 0 4px;
 
+        -webkit-box-flex: 1;
         -ms-flex: 1;
             flex: 1;
     }
@@ -1376,7 +1393,8 @@ h1 + .control .button
     width: calc(100% - 40px);
     max-width: 400px;
 
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 
     border-radius: 2px;
     background-color: white;
@@ -1439,7 +1457,8 @@ h1 + .control .button
     width: calc(100% - 32px);
     max-width: 720px;
 
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 
     border-radius: 2px;
     background-color: white;
@@ -1518,7 +1537,8 @@ h1 + .control .button
         width: 100vw;
         max-width: none !important;
 
-        transform: none;
+        -webkit-transform: none;
+                transform: none;
     }
 }
 
@@ -1665,7 +1685,8 @@ table tbody tr.odd td
     width: calc(100% - 32px);
     max-width: 300px;
 
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 }
 
 .index .center a.logo
@@ -1860,6 +1881,7 @@ table tbody tr.odd td
 
     content: '';
 
+    background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, .6)));
     background-image: linear-gradient(transparent, rgba(0, 0, 0, .6));
 }
 
@@ -1996,7 +2018,7 @@ table tbody tr.odd td
     content: attr(data-value);
     text-align: center;
 
-    color: #65c178;
+    color: #23cf5f;
     border-left: 1px solid #d7dadd;
 }
 
@@ -2150,7 +2172,8 @@ table tbody tr.odd td
     left: 50%;
 
     content: '\f1f8';
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 
     text-rendering: auto;
 }
@@ -2193,7 +2216,8 @@ table tbody tr.odd td
     padding: 10px 16px;
 
     content: 'Drag and drop\Aor click to upload';
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
     text-align: center;
     white-space: pre;
 
@@ -2243,7 +2267,8 @@ table tbody tr.odd td
     left: 50%;
 
     content: '\f021';
-    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
 
     text-rendering: auto;
 }
@@ -2423,7 +2448,7 @@ table tbody tr.odd td
 
     cursor: pointer;
 
-    color: #65c178;
+    color: #23cf5f;
 }
 
 .league table.league_table tbody tr td.stats .toggle:before
@@ -2438,7 +2463,8 @@ table tbody tr.odd td
 
 .league table.league_table tbody tr td.stats .toggle.open
 {
-    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
 }
 
 .league table.league_table tbody tr td.last_10 .game
@@ -2468,14 +2494,14 @@ table tbody tr.odd td
 
 .league table.league_table tbody tr td.last_10 .game.won
 {
-    background-color: #53ba68;
+    background-color: #23cf5f;
 }
 
 .league table.league_table tbody tr td.last_10 .game.won .detail:before
 {
     content: 'won';
 
-    color: #53ba68;
+    color: #23cf5f;
 }
 
 .league table.league_table tbody tr td.last_10 .game.lost
@@ -2508,8 +2534,10 @@ table tbody tr.odd td
     margin-bottom: 8px;
     padding: 10px;
 
-    transition: opacity 150ms;
-    transform: translate(-50%, 0);
+    -webkit-transition: opacity 150ms;
+            transition: opacity 150ms;
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
     white-space: nowrap;
     pointer-events: none;
 
@@ -2578,8 +2606,10 @@ table tbody tr.odd td
     height: 300px;
     margin-top: -332px;
 
-    transition: margin-top 300ms ease 100ms, opacity 300ms;
-    transform: translateZ(0);
+    -webkit-transition: margin-top 300ms ease 100ms, opacity 300ms;
+            transition: margin-top 300ms ease 100ms, opacity 300ms;
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
 
     opacity: 0;
 
@@ -2721,7 +2751,8 @@ table tbody tr.odd td
 
 .league table.league_table tbody tr.active td.stats .toggle
 {
-    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
 }
 
 .league table.league_table tbody tr.active + tr.stats td
@@ -2733,7 +2764,8 @@ table tbody tr.odd td
 {
     margin-top: 0;
 
-    transition: margin-top 300ms, opacity 300ms ease 300ms;
+    -webkit-transition: margin-top 300ms, opacity 300ms ease 300ms;
+            transition: margin-top 300ms, opacity 300ms ease 300ms;
 
     opacity: 1;
 }

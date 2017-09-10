@@ -449,10 +449,10 @@ function league_graph_render(row) {
         datasets: [
             {
                 fillColor: 'rgba(131,180,117,.1)',
-                strokeColor: '#83B475',
-                pointColor: '#83B475',
+                strokeColor: '#23cf5f',
+                pointColor: '#23cf5f',
                 pointStrokeColor: '#fff',
-                pointHighlightFill: '#83B475',
+                pointHighlightFill: '#23cf5f',
                 data: data
             }
         ]
