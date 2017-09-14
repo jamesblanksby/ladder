@@ -16,8 +16,6 @@ if ($_view == 'detail') :
 $league_id = $_GET['league_id'];
 $league = league_get($mysqli, $league_id);
 if (!isset($league)) page_error(404);
-
-// $user_position = league_user_position($mysqli, $league->id);
 ?>
 
 <?php require_once __DIR__ . '/src/include/template/modal/game_insert.php'; ?>
