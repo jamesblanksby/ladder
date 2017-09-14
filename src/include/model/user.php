@@ -311,19 +311,31 @@ function user_game_goal($mysqli, $user_id, $league_id = null) {
 }
 
 /* ----------------------------------------------------------------- RATING GET --- */
-function user_rating_get($mysqli, $user_id, $league_id, $time = null) {
-    $game_array = user_game_select($mysqli, $user_id, $league_id, $time, 1);
+function user_rating_get($mysqli, $league_id, $user_id, $time = null) {
+    $rating_sql = "
+        SELECT rating.*
+        FROM rating
+        WHERE rating.league = $league_id
+            AND rating.user = $user_id";
 
-    if (isset($game_array)) {
-        $game = array_values(array_slice($game_array, -1))[0];
+    if (isset($time)) {
+        $start = date('Y-m-d H:i:s', 0);
+        $finish = date('Y-m-d H:i:s', $time);
 
-        if ($game->player_1->id == $user_id) {
-            $player = 1;
-        } else if ($game->player_2->id == $user_id) {
-            $player = 2;
-        }
+        $rating_sql .= "
+            AND rating.time BETWEEN '$start' AND '$finish'";
+    }
 
-        return $game->{'rating_' . $player};
+    $rating_sql .= "
+        ORDER BY rating.time DESC
+        LIMIT 1";
+
+    $rating_result = $mysqli->query($rating_sql);
+
+    if ($rating_result->num_rows > 0) {
+        $rating = $rating_result->fetch_object();
+
+        return $rating->rating;
     }
 
     return null;

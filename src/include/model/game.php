@@ -71,8 +71,11 @@ function game_insert($mysqli) {
 
     $game_id = $mysqli->insert_id;
 
-    // rating
-    league_user_rating($mysqli, $league_id, $game_id);
+    // rating insert
+    league_user_rating_insert($mysqli, $league_id, $game_id);
+
+    //rating decay
+    league_user_rating_decay($mysqli, $league_id, $player_1, $player_2);
 
     if ($game_result) {
         $res->type = 'positive';

@@ -348,12 +348,11 @@ function league_table($mysqli, $league_id) {
                     $rating = $user->rating;
                 } else {
                     $time = strtotime('-' . $i . ' ' . 'day');
-                    $rating = user_rating_get($mysqli, $user->id, $league_id, $time);
+                    $rating = user_rating_get($mysqli, $league_id, $user->id, $time);
+                    if (is_null($rating)) $rating = 1000;
                 }
 
                 $user_graph_array[date('d/m', $time)] = $rating;
-
-                $relative = $time;
             }
 
             $item = (object) [
@@ -434,19 +433,20 @@ function league_table($mysqli, $league_id) {
 /* ------------------------------------------------------------------- USER GET --- */
 function league_user_get($mysqli, $league_id, $user_id) {
     $user_sql = "
-        SELECT user.*, 
-            league_user.rating AS rating
+        SELECT user.*,
+            (SELECT rating.rating FROM rating WHERE rating.user = user.id ORDER BY rating.time DESC LIMIT 1) AS rating
         FROM user
         JOIN league_user ON user.id = league_user.user 
         JOIN league ON league_user.league = league.id
         WHERE league.id = $league_id
-            AND user.id = $user_id";
+            AND user.id = $user_id
+        GROUP BY user.id";
 
     $user_result = $mysqli->query($user_sql);
 
     if ($user_result->num_rows > 0) {
         $user = $user_result->fetch_object();
-        $rating = $user->rating;
+        $rating = !empty($user->rating) ? $user->rating : 1000;
 
         $user = user_get($mysqli, $user->id);
         $user->rating = $rating;
@@ -460,19 +460,20 @@ function league_user_get($mysqli, $league_id, $user_id) {
 /* ---------------------------------------------------------------- USER SELECT --- */
 function league_user_select($mysqli, $league_id) {
     $user_sql = "
-        SELECT user.*, 
-            league_user.rating AS rating
+        SELECT user.*,
+            (SELECT rating.rating FROM rating WHERE rating.user = user.id ORDER BY rating.time DESC LIMIT 1) AS rating
         FROM user
         JOIN league_user ON user.id = league_user.user 
         JOIN league ON league_user.league = league.id
-        WHERE league.id = $league_id";
+        WHERE league.id = $league_id
+        GROUP BY user.id";
 
     $user_result = $mysqli->query($user_sql);
 
     if ($user_result->num_rows > 0) {
         $user_array = [];
         while ($user = $user_result->fetch_object()) {
-            $rating = $user->rating;
+            $rating = !empty($user->rating) ? $user->rating : 1000;
 
             $user = user_get($mysqli, $user->id);
             $user->rating = $rating;
@@ -510,42 +511,14 @@ function league_user_insert($mysqli, $id) {
     }
 }
 
-/* -------------------------------------------------------------- USER POSITION --- */
-function league_user_position($mysqli, $league_id) {
-    $data = (object) [];
-
-    $start = strtotime('tomorrow');
-
-    $data->week = [];
-    $data->position = (object) [];
-
-    for ($i = 25; $i >= 1; $i--) {
-        $current = strtotime(-$i . 'day', $start);
-        // $first = strtotime(date('Y', $current) . 'W' . str_pad(date('W', $current), 2, '0', STR_PAD_LEFT));
-
-        array_push($data->week, date('d/m', $current));
-
-        $table_array = league_table($mysqli, $league_id, $current);
-        foreach ($table_array as $position => $item) {
-            $object = $data->position->{$item->user->id};
-            if (!isset($object)) $object = [];
-
-            if ($item->empty === false) {
-                $object[] = $position + 1;
-            } else {
-                $object[] = null;
-            }
-
-            $data->position->{$item->user->id} = $object;
-        }
-    }
-
-    return $data;
-}
-
-/* ---------------------------------------------------------------- USER RATING --- */
-function league_user_rating($mysqli, $league_id, $game_id) {
+/* --------------------------------------------------------- USER RATING INSERT --- */
+function league_user_rating_insert($mysqli, $league_id, $game_id) {
     extract(data('post'));
+
+    $user_array = league_user_select($mysqli, $league_id);
+
+    $rating_gift = min(0, (count($user_array) - 2));
+    if ($rating_gift > 0) $rating_gift = (($rating_gift * 20) / 2);
 
     $player = league_user_get($mysqli, $league_id, $player_1);
     $rating_1 = (int) $player->rating;
@@ -558,34 +531,36 @@ function league_user_rating($mysqli, $league_id, $game_id) {
     $elo = new Elo;
     $delta = $elo->new_rating($rating_1, $rating_2, $result);
 
-    $rating_1 = ($rating_1 + $delta);
-    $rating_2 = ($rating_2 - $delta);
+    $rating_1 = (($rating_1 + $delta) + $rating_gift);
+    $rating_2 = (($rating_2 - $delta) + $rating_gift);
 
     $user_sql = "
-        UPDATE league_user
-        SET rating = ?
-        WHERE league_user.league = ?
-            AND league_user.user = ?";
-    
+        INSERT INTO rating (
+            league,
+            user,
+            rating
+        ) VALUES (?, ?, ?)";
+
     $user_stmt = $mysqli->prepare($user_sql);
     $user_stmt->bind_param('iii',
-        $rating_1,
         $league_id,
-        $player_1
+        $player_1,
+        $rating_1
     );
     $user_result = $user_stmt->execute();
 
     $user_sql = "
-        UPDATE league_user
-        SET rating = ?
-        WHERE league_user.league = ?
-            AND league_user.user = ?";
-    
+        INSERT INTO rating (
+            league,
+            user,
+            rating
+        ) VALUES (?, ?, ?)";
+
     $user_stmt = $mysqli->prepare($user_sql);
     $user_stmt->bind_param('iii',
-        $rating_2,
         $league_id,
-        $player_2
+        $player_2,
+        $rating_2
     );
     $user_result = $user_stmt->execute();
 
@@ -604,6 +579,35 @@ function league_user_rating($mysqli, $league_id, $game_id) {
     $game_result = $game_stmt->execute();
 }
 
+/* ---------------------------------------------------------- USER RATING DECAY --- */
+function league_user_rating_decay($mysqli, $league_id, $player_1, $player_2) {
+    $user_array = league_user_select($mysqli, $league_id);
+
+    if (isset($user_array)) {
+        foreach ($user_array as $user) {
+            if (in_array($user->id, [$player_1, $player_2])) continue;
+
+            $user_id = $user->id;
+            $rating = ($user->rating - 20);
+
+            $user_sql = "
+                INSERT INTO rating (
+                    league,
+                    user,
+                    rating
+                ) VALUES (?, ?, ?)";
+
+            $user_stmt = $mysqli->prepare($user_sql);
+            $user_stmt->bind_param('iii',
+                $league_id,
+                $user_id,
+                $rating
+            );
+            $user_result = $user_stmt->execute();
+        }
+    }
+}
+
 /* ---------------------------------------------------------------- GAME SELECT --- */
 function league_game_select($mysqli, $league_id, $time = null) {
     $game_sql = "
@@ -618,6 +622,9 @@ function league_game_select($mysqli, $league_id, $time = null) {
         $game_sql .= "
             AND game.time BETWEEN '$start' AND '$finish'";
     }
+
+    $game_sql .= "
+        ORDER BY game.time ASC";
 
     $game_result = $mysqli->query($game_sql);
 
