@@ -467,7 +467,8 @@ function league_graph_render(row) {
         datasetFill: true,
         pointDotRadius: 4,
         pointDotStrokeWidth: 1,
-        datasetStrokeWidth: 1
+        datasetStrokeWidth: 1,
+        bezierCurve: false
     });
 }
 
