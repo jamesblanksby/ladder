@@ -342,16 +342,16 @@ function league_table($mysqli, $league_id) {
     if (isset($user_array)) {
         foreach ($user_array as $user) {
 
-            $relative = $time = time();
-            for ($i = 0; $i < 12; $i++) {
-                if ($i > 0) {
-                    $monday = strtotime('last Monday', $relative);
-                    $time = strtotime('-1 second', $monday);
+            $time = time();
+            for ($i = 0; $i < 10; $i++) {
+                if ($i === 0) {
+                    $rating = $user->rating;
+                } else {
+                    $time = strtotime('-' . $i . ' ' . 'day');
+                    $rating = user_rating_get($mysqli, $user->id, $league_id, $time);
                 }
 
-                $rating = user_rating_get($mysqli, $user->id, $league_id, $time);
-                if (is_null($rating)) $rating = 1000;
-                $user_graph_array['Wk' . ' ' . date('W', $time)] = $rating;
+                $user_graph_array[date('d/m', $time)] = $rating;
 
                 $relative = $time;
             }
