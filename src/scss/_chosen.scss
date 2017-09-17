@@ -3,12 +3,12 @@ $chosen-sprite-retina: url('../gfx/chosen-sprite@2x.png') !default;
 
 /* @group Base */
 .chosen-container {
-    font: inherit;
     position: relative;
     display: inline-block;
     width: 100% !important;
     user-select: none;
     vertical-align: middle;
+    font: inherit;
     * {
         box-sizing: border-box;
     }
@@ -18,9 +18,9 @@ $chosen-sprite-retina: url('../gfx/chosen-sprite@2x.png') !default;
         top: 100%;
         clip: rect(0,0,0,0);
         width: 100%;
+        background-color: white;
         border: 1px solid $grey2;
         border-top: 0;
-        background-color: white;
     }
     &.chosen-with-drop .chosen-drop {
         clip: auto;
@@ -31,12 +31,12 @@ $chosen-sprite-retina: url('../gfx/chosen-sprite@2x.png') !default;
     .search-choice,
     .chosen-single {
         .group-name {
-            font-weight: normal;
             overflow: hidden;
             margin-right: 4px;
             white-space: nowrap;
             text-overflow: ellipsis;
-            color: #999;
+            font-weight: normal;
+            color: #999999;
             &:after {
                 padding-left: 2px;
                 content: ':';
@@ -50,21 +50,21 @@ $chosen-sprite-retina: url('../gfx/chosen-sprite@2x.png') !default;
 /* @group Single Chosen */
 .chosen-container-single {
     .chosen-single {
-        line-height: 15px;
         position: relative;
         display: block;
         overflow: hidden;
         padding: 10px 12px;
         white-space: nowrap;
         text-decoration: none;
-        color: #444;
-        border: 1px solid $grey2;
-        border-radius: 2px;
+        line-height: 15px;
         background-color: white;
         background-clip: padding-box;
+        border: 1px solid $grey2;
+        border-radius: 2px;
+        color: #444444;
     }
     .chosen-default {
-        color: #999;
+        color: #999999;
     }
     .chosen-single span {
         display: block;
@@ -77,13 +77,13 @@ $chosen-sprite-retina: url('../gfx/chosen-sprite@2x.png') !default;
         margin-right: 38px;
     }
     .chosen-single abbr {
-        font-size: 1px;
         position: absolute;
         top: 6px;
         right: 26px;
         display: block;
         width: 12px;
         height: 12px;
+        font-size: 1px;
         background: $chosen-sprite -42px 1px no-repeat;
         &:hover {
             background-position: -42px -10px;
@@ -113,11 +113,11 @@ $chosen-sprite-retina: url('../gfx/chosen-sprite@2x.png') !default;
         padding: 3px 4px;
         white-space: nowrap;
         input[type='text'] {
-            font: inherit;
             width: 100%;
             height: auto;
             margin: 1px 0;
             padding: 5px 8px;
+            font: inherit;
             border: 1px solid $grey2;
             border-radius: 0;
             outline: 0;
@@ -125,8 +125,8 @@ $chosen-sprite-retina: url('../gfx/chosen-sprite@2x.png') !default;
     }
     .chosen-drop {
         margin-top: -1px;
-        border-radius: 0 0 2px 2px;
         background-clip: padding-box;
+        border-radius: 0 0 2px 2px;
     }
     &.chosen-container-single-nosearch .chosen-search {
         position: absolute;
@@ -143,16 +143,16 @@ $chosen-sprite-retina: url('../gfx/chosen-sprite@2x.png') !default;
     max-height: 240px;
     margin: 0 4px 4px 0;
     padding: 0 0 0 4px;
-    color: #444;
+    color: #444444;
 
     -webkit-overflow-scrolling: touch;
     li {
-        line-height: 15px;
         display: none;
         margin: 0;
         padding: 10px 12px;
         list-style: none;
         word-wrap: break-word;
+        line-height: 15px;
 
         -webkit-touch-callout: none;
         &.active-result {
@@ -162,28 +162,28 @@ $chosen-sprite-retina: url('../gfx/chosen-sprite@2x.png') !default;
         &.disabled-result {
             display: list-item;
             cursor: default;
-            color: #ccc;
+            color: #cccccc;
         }
         &.highlighted {
-            color: white;
             background-color: $green4;
+            color: white;
         }
         &.no-results {
             display: list-item;
-            color: #777;
             background: #f4f4f4;
+            color: #777777;
         }
         &.group-result {
-            font-weight: bold;
             display: list-item;
             cursor: default;
+            font-weight: bold;
         }
         &.group-option {
             padding-left: 15px;
         }
         em {
-            font-style: normal;
             text-decoration: underline;
+            font-style: normal;
         }
     }
 }
@@ -200,9 +200,9 @@ $chosen-sprite-retina: url('../gfx/chosen-sprite@2x.png') !default;
         margin: 0;
         padding: 0 5px;
         cursor: text;
+        background-color: white;
         border: 1px solid $grey2;
         border-radius: 2px;
-        background-color: white;
     }
     .chosen-choices li {
         float: left;
@@ -212,7 +212,6 @@ $chosen-sprite-retina: url('../gfx/chosen-sprite@2x.png') !default;
             padding: 0;
             white-space: nowrap;
             input[type='text'] {
-                font: inherit;
                 position: relative;
                 top: -2px;
                 width: 25px;
@@ -220,39 +219,40 @@ $chosen-sprite-retina: url('../gfx/chosen-sprite@2x.png') !default;
                 margin-top: 8px;
                 margin-left: 7px;
                 padding: 0;
-                color: #999;
+                font: inherit;
+                background: transparent !important;
                 border: 0 !important;
                 border-radius: 0;
+                color: #999999;
                 outline: 0;
-                background: transparent !important;
             }
         }
         &.search-choice {
-            line-height: 13px;
             position: relative;
             top: 1px;
             max-width: 100%;
             margin: 5px 5px 5px 0;
             padding: 5px 20px 5px 5px;
             cursor: default;
-            color: #333;
-            border: 1px solid $grey2;
-            border-radius: 2px;
-            background-color: #eee;
+            line-height: 13px;
+            background-color: #eeeeee;
             background-repeat: repeat-x;
             background-clip: padding-box;
             background-size: 100% 19px;
+            border: 1px solid $grey2;
+            border-radius: 2px;
+            color: #333333;
             span {
                 word-wrap: break-word;
             }
             .search-choice-close {
-                font-size: 1px;
                 position: absolute;
                 top: 6px;
                 right: 3px;
                 display: block;
                 width: 12px;
                 height: 12px;
+                font-size: 1px;
                 background: $chosen-sprite -42px 1px no-repeat;
                 &:hover {
                     background-position: -42px -10px;
@@ -261,9 +261,9 @@ $chosen-sprite-retina: url('../gfx/chosen-sprite@2x.png') !default;
         }
         &.search-choice-disabled {
             padding-right: 5px;
-            color: #666;
-            border: 1px solid #ccc;
             background-color: #e4e4e4;
+            border: 1px solid #cccccc;
+            color: #666666;
         }
         &.search-choice-focus {
             background: #d4d4d4;
@@ -279,7 +279,7 @@ $chosen-sprite-retina: url('../gfx/chosen-sprite@2x.png') !default;
     .chosen-drop .result-selected {
         display: list-item;
         cursor: default;
-        color: #ccc;
+        color: #cccccc;
     }
 }
 /* @end */
@@ -295,8 +295,8 @@ $chosen-sprite-retina: url('../gfx/chosen-sprite@2x.png') !default;
             border-bottom-left-radius: 0;
         }
         .chosen-single div {
-            border-left: none;
             background: transparent;
+            border-left: none;
             b {
                 background-position: -18px 2px;
             }
@@ -304,7 +304,7 @@ $chosen-sprite-retina: url('../gfx/chosen-sprite@2x.png') !default;
     }
     .chosen-choices {
         li.search-field input[type='text'] {
-            color: #222 !important;
+            color: #222222 !important;
         }
     }
 }
@@ -394,16 +394,16 @@ $chosen-sprite-retina: url('../gfx/chosen-sprite@2x.png') !default;
 
 /* @group Retina compatibility */
 @media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-resolution: 144dpi), only screen and (min-resolution: 1.5dppx) {
-  .chosen-rtl .chosen-search input[type="text"],
-  .chosen-container-single .chosen-single abbr,
-  .chosen-container-single .chosen-single div b,
-  .chosen-container-single .chosen-search input[type="text"],
-  .chosen-container-multi .chosen-choices .search-choice .search-choice-close,
-  .chosen-container .chosen-results-scroll-down span,
-  .chosen-container .chosen-results-scroll-up span {
-    background-image: $chosen-sprite-retina !important;
-    background-size: 52px 37px !important;
-    background-repeat: no-repeat !important;
-  }
+    .chosen-rtl .chosen-search input[type='text'],
+    .chosen-container-single .chosen-single abbr,
+    .chosen-container-single .chosen-single div b,
+    .chosen-container-single .chosen-search input[type='text'],
+    .chosen-container-multi .chosen-choices .search-choice .search-choice-close,
+    .chosen-container .chosen-results-scroll-down span,
+    .chosen-container .chosen-results-scroll-up span {
+        background-image: $chosen-sprite-retina !important;
+        background-repeat: no-repeat !important;
+        background-size: 52px 37px !important;
+    }
 }
 /* @end */
