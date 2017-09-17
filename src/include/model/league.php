@@ -285,6 +285,17 @@ function league_delete($mysqli) {
     );
     $game_result = $game_stmt->execute();
 
+    // rating
+    $rating_sql = "
+        DELETE FROM rating
+        WHERE rating.league = ?";
+
+    $rating_stmt = $mysqli->prepare($rating_sql);
+    $rating_stmt->bind_param('i',
+        $league_id
+    );
+    $rating_result = $rating_stmt->execute();
+
     // poster
     @unlink(BASE_URL . DIR_LIB . '/league/' . $league->id . '.' . 'jpg');
 
