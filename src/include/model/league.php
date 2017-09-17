@@ -167,15 +167,30 @@ function league_update($mysqli) {
             // game
             $game_sql = "
                 DELETE FROM game
-                WHERE game.player_1 = ?
-                    OR game.player_2 = ?";
+                WHERE game.league = ?
+                    AND (game.player_1 = ?
+                    OR game.player_2 = ?)";
 
             $game_stmt = $mysqli->prepare($game_sql);
-            $game_stmt->bind_param('ii',
+            $game_stmt->bind_param('iii',
+                $league_id,
                 $user_id,
                 $user_id
             );
             $game_result = $game_stmt->execute();
+
+            // rating
+            $rating_sql = "
+                DELETE FROM rating
+                WHERE rating.league = ?
+                    AND rating.user = ?";
+
+            $rating_stmt = $mysqli->prepare($rating_sql);
+            $rating_stmt->bind_param('ii',
+                $league_id,
+                $user_id
+            );
+            $rating_result = $rating_stmt->execute();
         }
     }
 
