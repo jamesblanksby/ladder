@@ -368,7 +368,6 @@ function league_table($mysqli, $league_id) {
     if (isset($user_array)) {
         foreach ($user_array as $user) {
 
-            $time = time();
             $user_graph_array = [];
 
             for ($i = 0; $i < 10; $i++) {
