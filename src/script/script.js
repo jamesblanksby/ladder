@@ -437,12 +437,16 @@ function league_graph_render(row) {
     context = $canvas.get(0).getContext('2d');
 
     data = data.map(Number);
-    console.log(data);
 
-    // take 1000 off each
-    // max on array
-    // result is distance from middle
-    // round to 50 (Math.ceil(n / 50) * 50)
+    var data_calc = data.map(function(i) { 
+        return Math.abs(i - 1000); 
+    });
+    var value_max = Math.max.apply(Math, data_calc);
+    var range = (Math.ceil(value_max / 100) * 100);
+
+    var scale_start = 1000 - range;
+    var scale_step = 8;
+    var scale_width = ((1000 + range) - scale_start) / scale_step;
 
     graph = new Chart(context).LineWithLine({
         labels: label,
@@ -459,9 +463,9 @@ function league_graph_render(row) {
     },
     {
         scaleOverride: true,
-        scaleSteps: 6,
-        scaleStepWidth: 50,
-        scaleStartValue: 850,
+        scaleStartValue: scale_start,
+        scaleSteps: scale_step,
+        scaleStepWidth: scale_width,
         scaleFontFamily: 'apercu',
         scaleFontSize: 12,
         scaleFontColor: '#717A86',
