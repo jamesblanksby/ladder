@@ -46,4 +46,4 @@ define('FACEBOOK_SECRET', $env['facebook']['secret']);
 
 /* ------------------------------------------------------------------------ VAR --- */
 define('RATING_DEFAULT', 1000);
-define('RATING_DECAY', 6);
+define('RATING_DECAY', 2);
