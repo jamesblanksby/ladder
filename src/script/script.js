@@ -486,6 +486,7 @@ function league_graph_render(row) {
         scaleFontSize: 12,
         scaleFontColor: '#717A86',
         scaleLineColor: '#D7DADD',
+        showTooltips: false,
         tooltipFontFamily: 'apercu',
         tooltipFontSize: 12,
         tooltipFillColor: 'rgba(48,61,77,.9)',
