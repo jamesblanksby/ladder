@@ -381,6 +381,8 @@ function league_table($mysqli, $league_id) {
                 $user_graph_array[date('d/m', $time)] = $rating;
             }
 
+            $previous_rating = user_rating_get($mysqli, $league_id, $user->id, strtotime('last day of previous month'));
+
             $item = (object) [
                 'empty' => true,
                 'user' => $user,
@@ -390,11 +392,14 @@ function league_table($mysqli, $league_id) {
                 'for' => 0,
                 'against' => 0,
                 'goal_difference' => 0,
-                'rating' => $user->rating,
+                'rating' => (object) [
+                    'current' => $user->rating,
+                    'previous' => $previous_rating
+                ],
                 'graph' => array_reverse($user_graph_array)
             ];
 
-            $game_array = user_game_select($mysqli, $user->id, $league_id);
+            $game_array = user_game_select($mysqli, $user->id, $league_id, [strtotime(date('Y-m-01')), time()]);
 
             if (isset($game_array)) {
                 $item->empty = false;
@@ -431,7 +436,7 @@ function league_table($mysqli, $league_id) {
                 'result_last' => user_game_last($mysqli, $user->id, $league_id)[0],
                 'most_played' => user_game_opponent($mysqli, $user->id, $league_id),
                 'goal_average' => user_game_goal($mysqli, $user->id, $league_id),
-                'last_10' => user_game_last($mysqli, $user->id, $league_id, 10)
+                'last_10' => user_game_last($mysqli, $user->id, $league_id, [strtotime(date('Y-m-01')), time()], 10)
             ];
 
             $table_array[] = $item;
@@ -440,7 +445,7 @@ function league_table($mysqli, $league_id) {
 
 
     usort($table_array, function ($a, $b) {
-        $c = $b->rating - $a->rating;
+        $c = $b->rating->current - $a->rating->current;
         if ($c != 0) return $c;
 
         $c = $b->goal_difference - $a->goal_difference;

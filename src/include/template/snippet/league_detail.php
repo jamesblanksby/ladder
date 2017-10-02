@@ -25,6 +25,7 @@
             <td width="57" class="goal_difference">GD</td>
             <td width="65" class="rating">Rating</td>
             <td width="180" class="last_10">Last 10 Games</td>
+            <td width="65" class="previous">Previous</td>
         </tr>
     </thead>
     <tbody>
@@ -39,7 +40,7 @@
             <td class="for"><?php echo $item->for; ?></td>
             <td class="against"><?php echo $item->against; ?></td>
             <td class="goal_difference"><?php echo $item->goal_difference; ?></td>
-            <td class="rating"><?php echo $item->rating; ?></td>
+            <td class="rating"><?php echo $item->rating->current; ?></td>
             <td class="last_10">
                 <?php $count = (10 - count($item->stat->last_10)); ?>
                 <?php for ($i = 1; $i <= $count; $i++) : ?>
@@ -66,6 +67,7 @@
                     <?php endforeach; ?>
                 <?php endif; ?>
             </td>
+            <td class="previous"><?php echo $item->rating->previous; ?></td>
         </tr>
         <tr class="stats">
             <td colspan="13">

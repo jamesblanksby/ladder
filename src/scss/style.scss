@@ -1080,7 +1080,8 @@ table {
             &.player,
             &.played,
             &.goal_difference,
-            &.rating {
+            &.rating,
+            &.last_10 {
                 border-right: 1px solid;
             }
             &:not(.player):not(.last_10) {
@@ -1092,7 +1093,8 @@ table {
                 &.for,
                 &.against,
                 &.goal_difference,
-                &.last_10 {
+                &.last_10,
+                &.previous {
                     display: none;
                 }
                 &.rating {

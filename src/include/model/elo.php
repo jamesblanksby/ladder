@@ -6,7 +6,7 @@ class Elo
      * How strong a match will impact the players’ ratings
      * @var int The K Factor used.
      */
-    const KFACTOR = 32;
+    const KFACTOR = 40;
 
     public function new_rating($rating_a, $rating_b, $result)
     {
