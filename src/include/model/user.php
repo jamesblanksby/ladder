@@ -187,8 +187,13 @@ function user_game_select($mysqli, $user_id, $league_id = null, $time = null, $l
     }
 
     if (isset($time)) {
-        $start = date('Y-m-d H:i:s', 0);
-        $finish = date('Y-m-d H:i:s', $time);
+        if (is_array($time)) {
+            $start = date('Y-m-d H:i:s', $time[0]);
+            $finish = date('Y-m-d H:i:s', $time[1]);
+        } else {
+            $start = date('Y-m-d H:i:s', 0);
+            $finish = date('Y-m-d H:i:s', $time);
+        }
 
         $game_sql .= "
             AND game.time BETWEEN '$start' AND '$finish'";
@@ -219,7 +224,7 @@ function user_game_select($mysqli, $user_id, $league_id = null, $time = null, $l
 }
 
 /* ------------------------------------------------------------------ GAME LAST --- */
-function user_game_last($mysqli, $user_id, $league_id = null, $limit = 1) {
+function user_game_last($mysqli, $user_id, $league_id = null, $time = null, $limit = 1) {
     $game_sql = "
         SELECT game.*
         FROM game
@@ -229,6 +234,19 @@ function user_game_last($mysqli, $user_id, $league_id = null, $limit = 1) {
     if (isset($league_id)) {
         $game_sql .= "
             AND game.league = $league_id";
+    }
+
+    if (isset($time)) {
+        if (is_array($time)) {
+            $start = date('Y-m-d H:i:s', $time[0]);
+            $finish = date('Y-m-d H:i:s', $time[1]);
+        } else {
+            $start = date('Y-m-d H:i:s', 0);
+            $finish = date('Y-m-d H:i:s', $time);
+        }
+
+        $game_sql .= "
+            AND game.time BETWEEN '$start' AND '$finish'";
     }
 
     $game_sql .= "

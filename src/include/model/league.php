@@ -368,7 +368,7 @@ function league_table($mysqli, $league_id) {
                 'graph' => array_reverse($user_graph_array)
             ];
 
-            $game_array = user_game_select($mysqli, $user->id, $league_id);
+            $game_array = user_game_select($mysqli, $user->id, $league_id, [strtotime(date('Y-m-01')), time()]);
 
             if (isset($game_array)) {
                 $item->empty = false;
@@ -405,7 +405,7 @@ function league_table($mysqli, $league_id) {
                 'result_last' => user_game_last($mysqli, $user->id, $league_id)[0],
                 'most_played' => user_game_opponent($mysqli, $user->id, $league_id),
                 'goal_average' => user_game_goal($mysqli, $user->id, $league_id),
-                'last_10' => user_game_last($mysqli, $user->id, $league_id, 10)
+                'last_10' => user_game_last($mysqli, $user->id, $league_id, [strtotime(date('Y-m-01')), time()], 10)
             ];
 
             $table_array[] = $item;
