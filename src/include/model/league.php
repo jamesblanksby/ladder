@@ -369,19 +369,21 @@ function league_table($mysqli, $league_id) {
         foreach ($user_array as $user) {
 
             $time = time();
+            $user_graph_array = [];
+
             for ($i = 0; $i < 10; $i++) {
-                if ($i === 0) {
-                    $rating = $user->rating;
-                } else {
-                    $time = strtotime('-' . $i . ' ' . 'day');
-                    $rating = user_rating_get($mysqli, $league_id, $user->id, $time);
+                $time = strtotime('-' . $i . ' ' . 'day');
+
+                for ($k = 0; $k < 2; $k++) {
+                    if ($k === 0) $time_value = $time;
+                    else $time_value = strtotime('-1 month', $time);
+
+                    $rating = user_rating_get($mysqli, $league_id, $user->id, $time_value);
                     if (is_null($rating)) $rating = RATING_DEFAULT;
+
+                    $user_graph_array[date('d/m', $time)][] = $rating;
                 }
-
-                $user_graph_array[date('d/m', $time)] = $rating;
             }
-
-            $previous_rating = user_rating_get($mysqli, $league_id, $user->id, strtotime('last day of previous month'));
 
             $item = (object) [
                 'empty' => true,
@@ -394,7 +396,7 @@ function league_table($mysqli, $league_id) {
                 'goal_difference' => 0,
                 'rating' => (object) [
                     'current' => $user->rating,
-                    'previous' => $previous_rating
+                    'previous' => user_rating_get($mysqli, $league_id, $user->id, strtotime('last day of previous month'))
                 ],
                 'graph' => array_reverse($user_graph_array)
             ];

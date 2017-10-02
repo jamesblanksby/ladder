@@ -436,17 +436,24 @@ function league_graph_render(row) {
     label = JSON.parse($graph.attr('data-graph-label'));
     context = $canvas.get(0).getContext('2d');
 
-    data = data.map(Number);
+    data = data.map(function(value) { return value.map(Number); });
 
-    var data_calc = data.map(function(i) { 
-        return Math.abs(i - 1000); 
-    });
+    var data_calc = flatten(data);
+        data_calc = data_calc.map(function(i) { return Math.abs(i - 1000); });
+
     var value_max = Math.max.apply(Math, data_calc);
     var range = (Math.ceil(value_max / 100) * 100);
 
     var scale_start = 1000 - range;
     var scale_step = 8;
     var scale_width = ((1000 + range) - scale_start) / scale_step;
+
+    var data_current = data_previous = [];
+
+    for (var i = 0; i < data.length; i++) {
+        data_current.push(data[i][0]);
+        data_previous.push(data[i][1]);
+    }
 
     graph = new Chart(context).LineWithLine({
         labels: label,
@@ -457,7 +464,15 @@ function league_graph_render(row) {
                 pointColor: '#23cf5f',
                 pointStrokeColor: '#fff',
                 pointHighlightFill: '#23cf5f',
-                data: data
+                data: data_current
+            },
+            {
+                fillColor: 'rgba(164,164,164,0)',
+                strokeColor: '#a4a4a4',
+                pointColor: '#a4a4a4',
+                pointStrokeColor: '#fff',
+                pointHighlightFill: '#a4a4a4',
+                data: data_previous
             }
         ]
     },
@@ -482,6 +497,13 @@ function league_graph_render(row) {
         datasetStrokeWidth: 1,
         bezierCurve: false
     });
+}
+
+function flatten(array) {
+  return array.reduce(function(memo, el) {
+    var items = Array.isArray(el) ? flatten(el) : [el];
+    return memo.concat(items);
+  }, []);
 }
 
 /* --------------------------------------------------------------- IMAGE UPLOAD --- */
