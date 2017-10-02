@@ -448,7 +448,8 @@ function league_graph_render(row) {
     var scale_step = 8;
     var scale_width = ((1000 + range) - scale_start) / scale_step;
 
-    var data_current = data_previous = [];
+    var data_current = [];
+    var data_previous = [];
 
     for (var i = 0; i < data.length; i++) {
         data_current.push(data[i][0]);
