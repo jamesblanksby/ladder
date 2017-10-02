@@ -436,6 +436,14 @@ function league_graph_render(row) {
     label = JSON.parse($graph.attr('data-graph-label'));
     context = $canvas.get(0).getContext('2d');
 
+    data = data.map(Number);
+    console.log(data);
+
+    // take 1000 off each
+    // max on array
+    // result is distance from middle
+    // round to 50 (Math.ceil(n / 50) * 50)
+
     graph = new Chart(context).LineWithLine({
         labels: label,
         datasets: [
