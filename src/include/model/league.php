@@ -355,6 +355,8 @@ function league_table($mysqli, $league_id) {
                 $user_graph_array[date('d/m', $time)] = $rating;
             }
 
+            $previous_rating = user_rating_get($mysqli, $league_id, $user->id, strtotime('last day of previous month'));
+
             $item = (object) [
                 'empty' => true,
                 'user' => $user,
@@ -364,7 +366,10 @@ function league_table($mysqli, $league_id) {
                 'for' => 0,
                 'against' => 0,
                 'goal_difference' => 0,
-                'rating' => $user->rating,
+                'rating' => (object) [
+                    'current' => $user->rating,
+                    'previous' => $previous_rating
+                ],
                 'graph' => array_reverse($user_graph_array)
             ];
 
@@ -414,7 +419,7 @@ function league_table($mysqli, $league_id) {
 
 
     usort($table_array, function ($a, $b) {
-        $c = $b->rating - $a->rating;
+        $c = $b->rating->current - $a->rating->current;
         if ($c != 0) return $c;
 
         $c = $b->goal_difference - $a->goal_difference;

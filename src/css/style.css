@@ -2382,7 +2382,8 @@ table tbody tr.odd td
 .league table.league_table tr td.player,
 .league table.league_table tr td.played,
 .league table.league_table tr td.goal_difference,
-.league table.league_table tr td.rating
+.league table.league_table tr td.rating,
+.league table.league_table tr td.last_10
 {
     border-right: 1px solid;
 }
@@ -2399,7 +2400,8 @@ table tbody tr.odd td
     .league table.league_table tr td.for,
     .league table.league_table tr td.against,
     .league table.league_table tr td.goal_difference,
-    .league table.league_table tr td.last_10
+    .league table.league_table tr td.last_10,
+    .league table.league_table tr td.previous
     {
         display: none;
     }
