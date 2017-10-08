@@ -44,6 +44,10 @@ session_start();
 define('FACEBOOK_ID', $env['facebook']['id']);
 define('FACEBOOK_SECRET', $env['facebook']['secret']);
 
+/* ----------------------------------------------------------------- GOOGLE API --- */
+define('GOOGLE_ID', $env['google']['id']);
+define('GOOGLE_SECRET', $env['google']['secret']);
+
 /* ------------------------------------------------------------------------ VAR --- */
 define('RATING_DEFAULT', 1000);
 define('RATING_DECAY', 2);
