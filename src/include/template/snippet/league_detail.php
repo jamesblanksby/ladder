@@ -25,7 +25,7 @@
             <td width="57" class="goal_difference">GD</td>
             <td width="65" class="rating">Rating</td>
             <td width="180" class="last_10">Last 10 Games</td>
-            <td width="65" class="previous">Previous</td>
+            <td width="65" class="previous">Prev</td>
         </tr>
     </thead>
     <tbody>
