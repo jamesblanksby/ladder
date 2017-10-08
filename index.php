@@ -9,7 +9,7 @@
     <div class="login">
 
         <div class="social">
-            <!-- <a class="button google">Login with Google</a> -->
+            <a class="button google" href="<?php echo BASE_URL . '/src/include/data.php?f=google_auth'; ?>">Login with Google</a>
             <!-- <a class="button twitter">Login with Twitter</a> -->
             <a class="button facebook" href="<?php echo BASE_URL . '/src/include/data.php?f=facebook_auth'; ?>">Login with Facebook</a>
         </div>
