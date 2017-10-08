@@ -3,6 +3,7 @@
         "vendor-dir": "src/vendor"
     },
     "require" : {
-        "facebook/graph-sdk" : "~5.0"
+        "facebook/graph-sdk" : "~5.0",
+        "google/apiclient": "^2.0"
     }
 }
