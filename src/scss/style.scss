@@ -1007,15 +1007,18 @@ table {
         top: 0;
         right: 0;
         width: 300px;
+        bottom: 72px;
         margin-top: 61px;
         margin-right: 20px;
+        .scroll {
+            overflow: scroll;
+            height: 333px;
+            padding: 12px 0;
+            border-top: 1px solid $grey2;
+        }
         .item {
             position: relative;
             overflow: hidden;
-            &:first-of-type {
-                padding-top: 10px;
-                border-top: 1px solid $grey2;
-            }
             &:not(:last-child) {
                 margin-bottom: 10px;
             }

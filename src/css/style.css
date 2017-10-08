@@ -2277,10 +2277,21 @@ table tbody tr.odd td
     position: absolute;
     top: 0;
     right: 0;
+    bottom: 72px;
 
     width: 300px;
     margin-top: 61px;
     margin-right: 20px;
+}
+
+.league #league_setting .modal_box .player_list .scroll
+{
+    overflow: scroll;
+
+    height: 333px;
+    padding: 12px 0;
+
+    border-top: 1px solid #d7dadd;
 }
 
 .league #league_setting .modal_box .player_list .item
@@ -2288,13 +2299,6 @@ table tbody tr.odd td
     position: relative;
 
     overflow: hidden;
-}
-
-.league #league_setting .modal_box .player_list .item:first-of-type
-{
-    padding-top: 10px;
-
-    border-top: 1px solid #d7dadd;
 }
 
 .league #league_setting .modal_box .player_list .item:not(:last-child)

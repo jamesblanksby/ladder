@@ -43,16 +43,18 @@
                 <!-- user -->
                 <div class="player_list">
                     <label>League Players</label>
-                    <?php foreach ($league->user as $user) : ?>
-                        <?php $owner = $league->owner->id == $user->id ? 'owner' : ''; ?>
-                        <div class="item <?php echo $owner; ?>">
-                            <div class="avatar" style="background-image: url(<?php echo $user->image; ?>);"></div>
-                            <div class="name"><?php echo user_name($user); ?></div>    
-                            <div class="toggle">
-                                <input type="checkbox" id="<?php echo 'user_' . $user->id; ?>" name="user[]" value="<?php echo $user->id; ?>">
+                    <div class="scroll">
+                        <?php foreach ($league->user as $user) : ?>
+                            <?php $owner = $league->owner->id == $user->id ? 'owner' : ''; ?>
+                            <div class="item <?php echo $owner; ?>">
+                                <div class="avatar" style="background-image: url(<?php echo $user->image; ?>);"></div>
+                                <div class="name"><?php echo user_name($user); ?></div>    
+                                <div class="toggle">
+                                    <input type="checkbox" id="<?php echo 'user_' . $user->id; ?>" name="user[]" value="<?php echo $user->id; ?>">
+                                </div>
                             </div>
-                        </div>
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
 
             </div>
