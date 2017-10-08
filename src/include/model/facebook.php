@@ -31,6 +31,8 @@ function facebook_auth() {
 function facebook_callback() {
     global $mysqli;
 
+    $res = (object) [];
+
     $client = facebook_client();
 
     $helper = $client->getRedirectLoginHelper();
@@ -41,6 +43,14 @@ function facebook_callback() {
         $response = $client->get('/me?fields=id,first_name,last_name,email', $access_token);
 
         $data = $response->getGraphUser();
+
+        if (empty($data['email'])) {
+            $res->type = 'negative';
+            $res->text = 'Primary Facebook contact must be an email address';
+            $res->redirect = '/';
+
+            redirect($res->redirect);
+        }
 
         $user = user_get($mysqli, $data['email'], 'email');
 
