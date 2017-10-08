@@ -19,6 +19,11 @@ return $config = [
         'facebook' => [
             'id' => '',
             'secret' => ''
+        ],
+
+        'google' => [
+            'id' => '',
+            'secret' => ''
         ]
 
     ],
@@ -33,6 +38,11 @@ return $config = [
         'dir_root' => '',
 
         'facebook' => [
+            'id' => '',
+            'secret' => ''
+        ],
+
+        'google' => [
             'id' => '',
             'secret' => ''
         ]
