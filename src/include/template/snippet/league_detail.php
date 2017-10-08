@@ -67,7 +67,7 @@
                     <?php endforeach; ?>
                 <?php endif; ?>
             </td>
-            <td class="previous"><?php echo $item->rating->previous; ?></td>
+            <td class="previous"><?php echo !empty($item->rating->previous) ? $item->rating->previous : '--'; ?></td>
         </tr>
         <tr class="stats">
             <td colspan="13">
