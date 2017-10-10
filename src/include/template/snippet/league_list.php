@@ -25,8 +25,13 @@
                     <div class="role">Owner</div>
                 </div>
                 <div class="player_list">
-                    <?php foreach($league->user as $user) : ?>
-                        <div class="avatar" style="background-image: url(<?php echo $user->image; ?>);"></div>
+                    <?php foreach($league->user as $index => $user) : ?>
+                        <?php if (count($league->user) > 9 && $index == 8) : ?>
+                            <div class="truncate"><?php echo ((count($league->user) - 1) - $index); ?></div>
+                            <?php break; ?>
+                        <?php else : ?>
+                            <div class="avatar" style="background-image: url(<?php echo $user->image; ?>);"></div>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
                 <div class="leader">

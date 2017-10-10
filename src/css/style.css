@@ -2036,7 +2036,8 @@ table tbody tr.odd td
     margin: 0 -5px -10px -5px;
 }
 
-.league .league_list > .item .detail .player_list .avatar
+.league .league_list > .item .detail .player_list .avatar,
+.league .league_list > .item .detail .player_list .truncate
 {
     float: left;
 
@@ -2045,13 +2046,24 @@ table tbody tr.odd td
     margin: 0 5px 10px 5px;
 }
 
-.league .league_list > .item .detail .player_list .avatar .expand
+.league .league_list > .item .detail .player_list .truncate
 {
     font-size: 12px;
     font-weight: bold;
     line-height: 28px;
 
+    float: left;
+
     text-align: center;
+
+    color: #626262;
+    border-radius: 50%;
+    background-color: #d7dadd;
+}
+
+.league .league_list > .item .detail .player_list .truncate:before
+{
+    content: '+';
 }
 
 .league .league_list > .item .stats

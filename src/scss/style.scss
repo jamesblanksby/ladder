@@ -544,7 +544,7 @@ form {
             }
         }
         &.required {
-            > label:not(.error) {
+             > label:not(.error) {
                 &:after {
                     content: ' *';
                     color: $red4;
@@ -552,7 +552,7 @@ form {
             }
             label.error {
                 display: none !important;
-                + .chosen-container {
+                 + .chosen-container {
                     .chosen-default {
                         border-color: $red4;
                     }
@@ -720,7 +720,7 @@ table {
 .league .league_list {
     overflow: hidden;
     margin: 0 -10px;
-    > .item {
+     > .item {
         float: left;
         overflow: hidden;
         width: calc(33.333333% - 20px);
@@ -842,16 +842,24 @@ table {
                 width: 114px;
                 min-height: 114px;
                 margin: 0 -5px -10px -5px;
-                .avatar {
+                .avatar,
+                .truncate {
                     float: left;
                     width: 28px;
                     height: 28px;
                     margin: 0 5px 10px 5px;
-                    .expand {
-                        text-align: center;
-                        font-size: 12px;
-                        font-weight: bold;
-                        line-height: 28px;
+                }
+                .truncate {
+                    float: left;
+                    text-align: center;
+                    font-size: 12px;
+                    font-weight: bold;
+                    line-height: 28px;
+                    background-color: $grey2;
+                    border-radius: 50%;
+                    color: $grey4;
+                    &:before {
+                        content: '+';
                     }
                 }
             }
@@ -893,7 +901,7 @@ table {
         }
     }
     @media (max-width: $breakpoint1) {
-        > .item {
+         > .item {
             width: calc(100% - 20px);
         }
     }
@@ -1006,8 +1014,8 @@ table {
         position: absolute;
         top: 0;
         right: 0;
-        width: 300px;
         bottom: 72px;
+        width: 300px;
         margin-top: 61px;
         margin-right: 20px;
         .scroll {
@@ -1177,7 +1185,7 @@ table {
                 }
                 &.naked {
                     position: relative;
-                    > div {
+                     > div {
                         position: absolute;
                         top: 50%;
                         left: 50%;
