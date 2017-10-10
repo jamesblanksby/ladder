@@ -2313,6 +2313,7 @@ table tbody tr.odd td
         overflow: visible;
 
         height: auto;
+        padding-bottom: 0;
     }
 }
 
