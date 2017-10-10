@@ -2306,6 +2306,16 @@ table tbody tr.odd td
     border-top: 1px solid #d7dadd;
 }
 
+@media (max-width: 500px)
+{
+    .league #league_setting .modal_box .player_list .scroll
+    {
+        overflow: visible;
+
+        height: auto;
+    }
+}
+
 .league #league_setting .modal_box .player_list .item
 {
     position: relative;

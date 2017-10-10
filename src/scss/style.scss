@@ -1024,6 +1024,12 @@ table {
             padding: 12px 0;
             border-top: 1px solid $grey2;
         }
+        @media (max-width: $breakpoint1) {
+            .scroll {
+                overflow: visible;
+                height: auto;
+            }
+        }
         .item {
             position: relative;
             overflow: hidden;
