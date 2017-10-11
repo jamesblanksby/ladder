@@ -27,7 +27,7 @@
                 <div class="player_list">
                     <?php foreach($league->user as $index => $user) : ?>
                         <?php if (count($league->user) > 9 && $index == 8) : ?>
-                            <div class="truncate"><?php echo ((count($league->user) - 1) - $index); ?></div>
+                            <div class="truncate"><?php echo (count($league->user) - $index); ?></div>
                             <?php break; ?>
                         <?php else : ?>
                             <div class="avatar" style="background-image: url(<?php echo $user->image; ?>);"></div>
