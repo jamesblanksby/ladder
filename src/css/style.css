@@ -2403,7 +2403,6 @@ table tbody tr.odd td
 
 /* --------------------------------------------------------------- LEAGUE TABLE --- */
 .league table.league_table tr td.stats,
-.league table.league_table tr td.naked,
 .league table.league_table tr td.position,
 .league table.league_table tr td.player,
 .league table.league_table tr td.played,
@@ -2422,7 +2421,6 @@ table tbody tr.odd td
 @media (max-width: 500px)
 {
     .league table.league_table tr td.stats,
-    .league table.league_table tr td.naked,
     .league table.league_table tr td.for,
     .league table.league_table tr td.against,
     .league table.league_table tr td.goal_difference,
@@ -2497,16 +2495,69 @@ table tbody tr.odd td
             transform: rotate(90deg);
 }
 
-.league table.league_table tbody tr td.naked .detail,
-.league table.league_table tbody tr td.last_10 .detail
+.league table.league_table tbody tr td.player
+{
+    position: relative;
+
+    padding-left: 32px;
+}
+
+.league table.league_table tbody tr td.player .naked
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.league table.league_table tbody tr td.player .naked > div
+{
+    width: 32px;
+    height: 38px;
+
+    cursor: pointer;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 85%;
+}
+
+.league table.league_table tbody tr td.player .naked > div.stage_0
+{
+    background-image: url('../gfx/man_0.svg');
+}
+
+.league table.league_table tbody tr td.player .naked > div.stage_1
+{
+    background-image: url('../gfx/man_1.svg');
+}
+
+.league table.league_table tbody tr td.player .naked > div.stage_2
+{
+    background-image: url('../gfx/man_2.svg');
+}
+
+.league table.league_table tbody tr td.player .naked > div.stage_3
+{
+    background-image: url('../gfx/man_3.svg');
+}
+
+.league table.league_table tbody tr td.player .naked .detail
 {
     font-size: 13px;
 
     position: absolute;
+    top: 0;
     left: 50%;
+
+    width: 40px;
+    height: auto;
+    padding: 5px 5px 6px;
 
     -webkit-transition: opacity 150ms;
             transition: opacity 150ms;
+    -webkit-transform: translate(-50%, -100%);
+            transform: translate(-50%, -100%);
+    text-align: center;
     pointer-events: none;
 
     opacity: 0;
@@ -2515,8 +2566,7 @@ table tbody tr.odd td
     background-color: rgba(48, 61, 77, .9);
 }
 
-.league table.league_table tbody tr td.naked .detail:after,
-.league table.league_table tbody tr td.last_10 .detail:after
+.league table.league_table tbody tr td.player .naked .detail:after
 {
     position: absolute;
     top: 100%;
@@ -2535,64 +2585,45 @@ table tbody tr.odd td
     border-top-color: rgba(48, 61, 77, .9);
 }
 
-.league table.league_table tbody tr td.naked
-{
-    position: relative;
-}
-
-.league table.league_table tbody tr td.naked > div
-{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    width: 32px;
-    height: 38px;
-
-    cursor: pointer;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 85%;
-}
-
-.league table.league_table tbody tr td.naked > div.stage_0
-{
-    background-image: url('../gfx/man_0.svg');
-}
-
-.league table.league_table tbody tr td.naked > div.stage_1
-{
-    background-image: url('../gfx/man_1.svg');
-}
-
-.league table.league_table tbody tr td.naked > div.stage_2
-{
-    background-image: url('../gfx/man_2.svg');
-}
-
-.league table.league_table tbody tr td.naked > div.stage_3
-{
-    background-image: url('../gfx/man_3.svg');
-}
-
-.league table.league_table tbody tr td.naked .detail
-{
-    top: 0;
-
-    width: 40px;
-    height: auto;
-    padding: 5px 5px 6px;
-
-    -webkit-transform: translate(-50%, -100%);
-            transform: translate(-50%, -100%);
-}
-
-.league table.league_table tbody tr td.naked:hover .detail
+.league table.league_table tbody tr td.player .naked:hover .detail
 {
     opacity: 1;
+}
+
+.league table.league_table tbody tr td.last_10 .detail
+{
+    font-size: 13px;
+
+    position: absolute;
+    left: 50%;
+
+    -webkit-transition: opacity 150ms;
+            transition: opacity 150ms;
+    pointer-events: none;
+
+    opacity: 0;
+    color: white;
+    border-radius: 3px;
+    background-color: rgba(48, 61, 77, .9);
+}
+
+.league table.league_table tbody tr td.last_10 .detail:after
+{
+    position: absolute;
+    top: 100%;
+    left: 50%;
+
+    width: 0;
+    height: 0;
+    margin-left: -5px;
+
+    content: ' ';
+    pointer-events: none;
+
+    border: solid transparent;
+    border-width: 5px;
+    border-color: rgba(48, 61, 77, 0);
+    border-top-color: rgba(48, 61, 77, .9);
 }
 
 .league table.league_table tbody tr td.last_10 .game

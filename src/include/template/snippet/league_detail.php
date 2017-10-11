@@ -33,7 +33,13 @@
         <tr class="<?php echo $position % 2 === 0 ? 'even' : 'odd'; ?>">
             <td class="stats"><a class="toggle"></a></td>
             <td class="position"><?php echo ($position + 1); ?></td>
-            <td class="player"><?php echo user_name($item->user); ?></td>
+            <td class="player">
+                <div class="naked">
+                    <div class="detail"><?php echo $item->naked . '/3'; ?></div>
+                    <div class="<?php echo 'stage' . '_' . $item->naked; ?>"></div>
+                </div>
+                <?php echo user_name($item->user); ?>
+            </td>
             <td class="played"><?php echo $item->played; ?></td>
             <td class="won"><?php echo $item->won; ?></td>
             <td class="lost"><?php echo $item->lost; ?></td>

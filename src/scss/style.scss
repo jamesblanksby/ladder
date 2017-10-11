@@ -1094,7 +1094,6 @@ table {
     tr {
         td {
             &.stats,
-            &.naked,
             &.position,
             &.player,
             &.played,
@@ -1108,7 +1107,6 @@ table {
             }
             @media (max-width: $breakpoint1) {
                 &.stats,
-                &.naked,
                 &.for,
                 &.against,
                 &.goal_difference,
@@ -1163,7 +1161,71 @@ table {
                         }
                     }
                 }
-                &.naked,
+                &.player {
+                    position: relative;
+                    padding-left: 32px;
+                    .naked {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                         > div {
+                            width: 32px;
+                            height: 38px;
+                            cursor: pointer;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                            background-size: 85%;
+                            &.stage_0 {
+                                background-image: url('../gfx/man_0.svg');
+                            }
+                            &.stage_1 {
+                                background-image: url('../gfx/man_1.svg');
+                            }
+                            &.stage_2 {
+                                background-image: url('../gfx/man_2.svg');
+                            }
+                            &.stage_3 {
+                                background-image: url('../gfx/man_3.svg');
+                            }
+                        }
+                        .detail {
+                            position: absolute;
+                            top: 0;
+                            left: 50%;
+                            width: 40px;
+                            height: auto;
+                            padding: 5px 5px 6px;
+                            transition: opacity 150ms;
+                            transform: translate(-50%, -100%);
+                            pointer-events: none;
+                            font-size: 13px;
+                            background-color: rgba($grey9, .9);
+                            text-align: center;
+                            border-radius: 3px;
+                            color: white;
+                            opacity: 0;
+                            &:after {
+                                position: absolute;
+                                top: 100%;
+                                left: 50%;
+                                width: 0;
+                                height: 0;
+                                margin-left: -5px;
+                                content: ' ';
+                                pointer-events: none;
+                                border: solid transparent;
+                                border-width: 5px;
+                                border-color: rgba($grey9, 0);
+                                border-top-color: rgba($grey9, .9);
+                            }
+                        }
+                        &:hover {
+                            .detail {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
                 &.last_10 {
                     .detail {
                         position: absolute;
@@ -1188,45 +1250,6 @@ table {
                             border-width: 5px;
                             border-color: rgba($grey9, 0);
                             border-top-color: rgba($grey9, .9);
-                        }
-                    }
-                }
-                &.naked {
-                    position: relative;
-                     > div {
-                        position: absolute;
-                        top: 50%;
-                        left: 50%;
-                        width: 32px;
-                        height: 38px;
-                        cursor: pointer;
-                        transform: translate(-50%, -50%);
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        background-size: 85%;
-                        &.stage_0 {
-                            background-image: url('../gfx/man_0.svg');
-                        }
-                        &.stage_1 {
-                            background-image: url('../gfx/man_1.svg');
-                        }
-                        &.stage_2 {
-                            background-image: url('../gfx/man_2.svg');
-                        }
-                        &.stage_3 {
-                            background-image: url('../gfx/man_3.svg');
-                        }
-                    }
-                    .detail {
-                        top: 0;
-                        width: 40px;
-                        height: auto;
-                        padding: 5px 5px 6px;
-                        transform: translate(-50%, -100%);
-                    }
-                    &:hover {
-                        .detail {
-                            opacity: 1;
                         }
                     }
                 }
