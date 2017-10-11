@@ -290,8 +290,10 @@ function modal_init() {
 function modal_show() {
     $(document).on('click', '[data-modal]', function() {
         var modal_id = $(this).data('modal');
+        var href = window.location.href.split("#")[0];
 
-        history.replaceState({}, {}, window.location.href + '#' + modal_id);
+        history.replaceState({}, {}, href);
+        history.replaceState({}, {}, href + '#' + modal_id);
 
         modal_hash();
 
