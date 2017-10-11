@@ -378,7 +378,7 @@ function league_table($mysqli, $league_id) {
                     else $time_value = strtotime('-1 month', $time);
 
                     $rating = user_rating_get($mysqli, $league_id, $user->id, $time_value);
-                    if (is_null($rating)) $rating = RATING_DEFAULT;
+                    if ($k === 0 && is_null($rating)) $rating = RATING_DEFAULT;
 
                     $user_graph_array[date('d/m', $time)][] = $rating;
                 }
