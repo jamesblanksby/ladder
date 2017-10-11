@@ -2590,6 +2590,18 @@ table tbody tr.odd td
     opacity: 1;
 }
 
+@media (max-width: 500px)
+{
+    .league table.league_table tbody tr td.player
+    {
+        padding-left: 10px;
+    }
+    .league table.league_table tbody tr td.player .naked
+    {
+        display: none;
+    }
+}
+
 .league table.league_table tbody tr td.last_10 .detail
 {
     font-size: 13px;
