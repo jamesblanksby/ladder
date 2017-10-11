@@ -14,7 +14,7 @@
 /* ---------------------------------------------------------------------- COLOR --- */
 $green4: #23cf5f;
 $green5: darken($green4, 5%);
-$red4: #d66c54;
+$ruby4: #d66c54;
 $gold4: #fdbe2c;
 $grey1: #f3f3f3;
 $grey2: #d7dadd;
@@ -298,7 +298,7 @@ main {
         }
     }
     &.negative {
-        background-color: $red4;
+        background-color: $ruby4;
         .text {
             &:before {
                 content: '\f00d';
@@ -345,7 +345,7 @@ main {
         }
     }
     &.negative {
-        background-color: $red4;
+        background-color: $ruby4;
         color: white;
     }
     &.disabled {
@@ -541,21 +541,21 @@ form {
             border-radius: 2px;
             color: $grey8;
             &.error {
-                border-color: $red4;
+                border-color: $ruby4;
             }
         }
         &.required {
              > label:not(.error) {
                 &:after {
                     content: ' *';
-                    color: $red4;
+                    color: $ruby4;
                 }
             }
             label.error {
                 display: none !important;
                  + .chosen-container {
                     .chosen-default {
-                        border-color: $red4;
+                        border-color: $ruby4;
                     }
                 }
             }
@@ -934,7 +934,7 @@ table {
             width: 30px;
             height: 30px;
             text-decoration: none;
-            background-color: $red4;
+            background-color: $ruby4;
             border-radius: 2px;
             color: white;
             &:before {
@@ -1072,7 +1072,7 @@ table {
                     content: 'Remove';
                     cursor: pointer;
                     font-size: 12px;
-                    color: $red4;
+                    color: $ruby4;
                 }
                 [type='checkbox'] {
                     display: none;
@@ -1277,7 +1277,7 @@ table {
                             .detail {
                                 &:before {
                                     content: 'lost';
-                                    color: $red4;
+                                    color: $ruby4;
                                 }
                             }
                         }
@@ -1285,10 +1285,10 @@ table {
                             background-color: black;
                         }
                         &.lost {
-                            background-color: $red4;
+                            background-color: $ruby4;
                             .detail {
                                 &:before {
-                                    color: $red4;
+                                    color: $ruby4;
                                 }
                             }
                         }
