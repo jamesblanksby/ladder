@@ -55,7 +55,11 @@
                         } else if ($game->player_2->id == $item->user->id) {
                             $player = 2;
                         }
-                        $outcome = $game->winner == $player ? 'won' : 'lost';
+                        if (($game->score_1 + $game->score_2) > 10) {
+                            $outcome = $game->winner == $player ? 'won' : 'lost';
+                        } else {
+                            $outcome = $game->winner == $player ? 'naked_1' : 'naked_0';
+                        }
                         ?>
                         <div class="game <?php echo $outcome; ?>">
                             <div class="detail">

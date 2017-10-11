@@ -2615,9 +2615,27 @@ table tbody tr.odd td
 }
 
 .league table.league_table tbody tr td.last_10 .game.won,
-.league table.league_table tbody tr td.last_10 .game.lost
+.league table.league_table tbody tr td.last_10 .game.lost,
+.league table.league_table tbody tr td.last_10 .game.naked_0,
+.league table.league_table tbody tr td.last_10 .game.naked_1
 {
     cursor: pointer;
+}
+
+.league table.league_table tbody tr td.last_10 .game.won .detail:before,
+.league table.league_table tbody tr td.last_10 .game.naked_1 .detail:before
+{
+    content: 'won';
+}
+
+.league table.league_table tbody tr td.last_10 .game.naked_1
+{
+    background-color: #fdbe2c;
+}
+
+.league table.league_table tbody tr td.last_10 .game.naked_1 .detail:before
+{
+    color: #fdbe2c;
 }
 
 .league table.league_table tbody tr td.last_10 .game.won
@@ -2627,9 +2645,20 @@ table tbody tr.odd td
 
 .league table.league_table tbody tr td.last_10 .game.won .detail:before
 {
-    content: 'won';
-
     color: #23cf5f;
+}
+
+.league table.league_table tbody tr td.last_10 .game.lost .detail:before,
+.league table.league_table tbody tr td.last_10 .game.naked_0 .detail:before
+{
+    content: 'lost';
+
+    color: #d66c54;
+}
+
+.league table.league_table tbody tr td.last_10 .game.naked_0
+{
+    background-color: black;
 }
 
 .league table.league_table tbody tr td.last_10 .game.lost
@@ -2639,8 +2668,6 @@ table tbody tr.odd td
 
 .league table.league_table tbody tr td.last_10 .game.lost .detail:before
 {
-    content: 'lost';
-
     color: #d66c54;
 }
 

@@ -15,6 +15,7 @@
 $green4: #23cf5f;
 $green5: darken($green4, 5%);
 $red4: #d66c54;
+$gold4: #fdbe2c;
 $grey1: #f3f3f3;
 $grey2: #d7dadd;
 $grey3: #a4a4a4;
@@ -1242,23 +1243,51 @@ table {
                             margin-right: 3px;
                         }
                         &.won,
-                        &.lost {
+                        &.lost,
+                        &.naked_0,
+                        &.naked_1 {
                             cursor: pointer;
+                        }
+                        &.won,
+                        &.naked_1 {
+                            .detail {
+                                &:before {
+                                    content: 'won';
+                                }
+                            }
+                        }
+                        &.naked_1 {
+                            background-color: $gold4;
+                            .detail {
+                                &:before {
+                                    color: $gold4;
+                                }
+                            }
                         }
                         &.won {
                             background-color: $green4;
                             .detail {
                                 &:before {
-                                    content: 'won';
                                     color: $green4;
                                 }
                             }
+                        }
+                        &.lost,
+                        &.naked_0 {
+                            .detail {
+                                &:before {
+                                    content: 'lost';
+                                    color: $red4;
+                                }
+                            }
+                        }
+                        &.naked_0 {
+                            background-color: black;
                         }
                         &.lost {
                             background-color: $red4;
                             .detail {
                                 &:before {
-                                    content: 'lost';
                                     color: $red4;
                                 }
                             }
