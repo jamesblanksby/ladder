@@ -364,6 +364,10 @@ function league_code_ajax() {
 function league_table($mysqli, $league_id) {
     $user_array = league_user_select($mysqli, $league_id);
 
+    $day_last = strtotime('last friday of this month');
+    if (date('M') != date('M', $day_last)) $day_last = strtotime('last friday of last month');
+    $day_last = strtotime('+1 day', $day_last);
+
     $table_array = [];
     if (isset($user_array)) {
         foreach ($user_array as $user) {
@@ -396,12 +400,12 @@ function league_table($mysqli, $league_id) {
                 'goal_difference' => 0,
                 'rating' => (object) [
                     'current' => $user->rating,
-                    'previous' => user_rating_get($mysqli, $league_id, $user->id, strtotime('last day of previous month'))
+                    'previous' => user_rating_get($mysqli, $league_id, $user->id, $day_last)
                 ],
                 'graph' => array_reverse($user_graph_array)
             ];
 
-            $game_array = user_game_select($mysqli, $user->id, $league_id, [strtotime(date('Y-m-01')), time()]);
+            $game_array = user_game_select($mysqli, $user->id, $league_id, [$day_last, time()]);
 
             if (isset($game_array)) {
                 $item->empty = false;
@@ -438,7 +442,7 @@ function league_table($mysqli, $league_id) {
                 'result_last' => user_game_last($mysqli, $user->id, $league_id)[0],
                 'most_played' => user_game_opponent($mysqli, $user->id, $league_id),
                 'goal_average' => user_game_goal($mysqli, $user->id, $league_id),
-                'last_10' => user_game_last($mysqli, $user->id, $league_id, [strtotime(date('Y-m-01')), time()], 10)
+                'last_10' => user_game_last($mysqli, $user->id, $league_id, [$day_last, time()], 10)
             ];
 
             $table_array[] = $item;
