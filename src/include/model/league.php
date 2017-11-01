@@ -364,9 +364,16 @@ function league_code_ajax() {
 function league_table($mysqli, $league_id) {
     $user_array = league_user_select($mysqli, $league_id);
 
-    $day_last = strtotime('last friday of this month');
-    if (date('M') != date('M', $day_last)) $day_last = strtotime('last friday of last month');
-    $day_last = strtotime('+1 day', $day_last);
+    $day_today = time();
+    $day_last = strtotime('last day of this month', $day_today);
+    $day_last_this = strtotime('last friday of this month', $day_today);
+    $day_last_prev = strtotime('last friday of last month', $day_today);
+
+    $day_calc = $day_last_prev;
+    if ((date('Y-m-d', $day_today) > date('Y-m-d', $day_last_this)) && (date('Y-m-d', $day_today) <= date('Y-m-d', $day_last))) {
+        $day_calc = $day_last_this;
+    }
+    $day_calc = strtotime('+1 day', $day_calc);
 
     $table_array = [];
     if (isset($user_array)) {
@@ -400,12 +407,12 @@ function league_table($mysqli, $league_id) {
                 'goal_difference' => 0,
                 'rating' => (object) [
                     'current' => $user->rating,
-                    'previous' => user_rating_get($mysqli, $league_id, $user->id, $day_last)
+                    'previous' => user_rating_get($mysqli, $league_id, $user->id, $day_calc)
                 ],
                 'graph' => array_reverse($user_graph_array)
             ];
 
-            $game_array = user_game_select($mysqli, $user->id, $league_id, [$day_last, time()]);
+            $game_array = user_game_select($mysqli, $user->id, $league_id, [$day_calc, time()]);
 
             if (isset($game_array)) {
                 $item->empty = false;
@@ -442,7 +449,7 @@ function league_table($mysqli, $league_id) {
                 'result_last' => user_game_last($mysqli, $user->id, $league_id)[0],
                 'most_played' => user_game_opponent($mysqli, $user->id, $league_id),
                 'goal_average' => user_game_goal($mysqli, $user->id, $league_id),
-                'last_10' => user_game_last($mysqli, $user->id, $league_id, [$day_last, time()], 10)
+                'last_10' => user_game_last($mysqli, $user->id, $league_id, [$day_calc, time()], 10)
             ];
 
             $table_array[] = $item;
