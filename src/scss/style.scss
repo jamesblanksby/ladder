@@ -12,8 +12,8 @@
 @import 'font';
 
 /* ---------------------------------------------------------------------- COLOR --- */
-$green4: #23cf5f;
-$green5: darken($green4, 5%);
+$moss4: #23cf5f;
+$moss5: darken($moss4, 5%);
 $ruby4: #d66c54;
 $gold4: #fdbe2c;
 $grey1: #f3f3f3;
@@ -107,7 +107,7 @@ header {
     left: 0;
     width: 100%;
     padding: 9px 0;
-    background-color: $green4;
+    background-color: $moss4;
     .container {
         position: relative;
         overflow: visible;
@@ -290,7 +290,7 @@ main {
         }
     }
     &.positive {
-        background-color: $green4;
+        background-color: $moss4;
         .text {
             &:before {
                 content: '\f00c';
@@ -329,10 +329,10 @@ main {
     border: 0;
     border-radius: 2px;
     &.primary {
-        background-color: $green4;
+        background-color: $moss4;
         color: white;
         &:hover {
-            background-color: $green5;
+            background-color: $moss5;
         }
     }
     &.secondary {
@@ -830,7 +830,7 @@ table {
                         text-align: center;
                         font-weight: bold;
                         border-left: 1px solid $grey2;
-                        color: $green4;
+                        color: $moss4;
                     }
                 }
                 .player_1 {
@@ -1150,7 +1150,7 @@ table {
                         left: 0;
                         cursor: pointer;
                         line-height: 39px;
-                        color: $green4;
+                        color: $moss4;
                         &:before {
                             content: '\f054';
                             font-size: 12px;
@@ -1296,10 +1296,10 @@ table {
                             }
                         }
                         &.won {
-                            background-color: $green4;
+                            background-color: $moss4;
                             .detail {
                                 &:before {
-                                    color: $green4;
+                                    color: $moss4;
                                 }
                             }
                         }
