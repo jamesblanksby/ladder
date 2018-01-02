@@ -25,6 +25,7 @@ $grey9: #303d4d;
 
 /* ----------------------------------------------------------------- BREAKPOINT --- */
 $breakpoint1: 500px;
+$breakpoint2: 320px;
 
 /* --------------------------------------------------------------------- CHOSEN --- */
 @import 'chosen';
@@ -1124,6 +1125,11 @@ table {
                     border-left: 1px solid;
                 }
             }
+            @media (max-width: $breakpoint2) {
+                &.position {
+                    display: none;
+                }
+            }
         }
     }
     thead {
@@ -1169,6 +1175,9 @@ table {
                 &.player {
                     position: relative;
                     padding-left: 32px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
                     .naked {
                         position: absolute;
                         top: 0;
