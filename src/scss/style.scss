@@ -1176,7 +1176,6 @@ table {
                     position: relative;
                     padding-left: 32px;
                     white-space: nowrap;
-                    overflow: hidden;
                     text-overflow: ellipsis;
                     .naked {
                         position: absolute;
@@ -1242,6 +1241,7 @@ table {
                 }
                 @media (max-width: $breakpoint1) {
                     &.player {
+                        overflow: hidden;
                         padding-left: 10px;
                         .naked {
                             display: none;
