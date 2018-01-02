@@ -126,6 +126,11 @@ header {
         background-repeat: no-repeat;
         background-size: contain;
     }
+    @media (max-width: $breakpoint1) {
+        a.logo {
+            margin-right: 0;
+        }
+    }
     nav {
         float: left;
         margin-top: 7.5px;
