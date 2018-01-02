@@ -170,7 +170,7 @@ function user_league_naked($mysqli, $user_id, $league_id) {
         }
     }
 
-    return $count;
+    return min(3, $count);
 }
 
 /* ---------------------------------------------------------------- GAME SELECT --- */
