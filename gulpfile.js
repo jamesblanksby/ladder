@@ -16,8 +16,8 @@ var map    = require('gulp-sourcemaps');
 
 /* glob */
 var glob = {
-    scss: '**/scss/**/*.scss',
-    script: '**/script/**/*.js'
+    scss: '/src/scss/**/*.scss',
+    script: '/src/script/**/*.js'
 };
 
 /* error */
