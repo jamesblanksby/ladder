@@ -470,7 +470,6 @@ h1 + .control {
             overflow-y: auto;
             max-height: 500px;
             padding: 0 20px 20px 20px;
-
             -webkit-overflow-scrolling: touch;
         }
         @media (max-width: $breakpoint1) {
@@ -650,12 +649,12 @@ table {
                 }
                 &:before {
                     position: absolute;
-                    top: 0;
-                    bottom: 0;
+                    top: 50%;
                     left: 0;
                     width: 42px;
+                    transform: translate(0, -50%);
                     text-align: center;
-                    line-height: 42px;
+                    line-height: 1;
                     color: white;
                     @include fa(22px);
                 }
